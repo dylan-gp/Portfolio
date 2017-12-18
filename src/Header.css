@@ -1,0 +1,73 @@
+.header {
+  height: 65vw;
+  overflow: hidden;
+  background-color: rgba(67, 32, 160, .8);
+}
+
+.header-titles {
+  margin: auto;
+  height: 54.2vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.arrow {
+  height: 8vw;
+  position: absolute;
+  top: 78%;
+  -webkit-transition: 0.4s;
+  -moz-transition: 0.4s;
+  -o-transition: 0.4s;
+  transition: 0.4s;
+  opacity: 1;
+  visibility: visible; 
+}
+
+.arrow-none {
+  height: 8vw;
+  position: absolute;
+  top: 78%;
+  -webkit-transition: 0.4s;
+  -moz-transition: 0.4s;
+  -o-transition: 0.4s;
+  transition: 0.4s;
+  opacity: 0;
+  visibility: hidden; 
+}
+
+.header-title {
+  padding: 0;
+  margin: .6vw auto;
+  font-size: 7vmin;
+  -webkit-transition: 0.8s;
+  -moz-transition: 0.8s;
+  -o-transition: 0.8s;
+  transition: 0.8s;
+  opacity: 1;
+  visibility: visible; 
+  text-shadow: 2px 2px rgba(255, 255, 255, .6);
+}
+
+.header-title-none {
+  -webkit-transition: 0.8s;
+  -moz-transition: 0.8s;
+  -o-transition: 0.8s;
+  transition: 0.8s;
+  font-size: 7vmin;
+  opacity: 0;
+  visibility: hidden; 
+}
+
+.header-links {
+  height: 11vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+.header-icon {
+  height: 5vw;
+  margin: auto .6vw;
+}
