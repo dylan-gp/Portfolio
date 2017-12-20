@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { findDOMNode } from 'react-dom';
 import Header from './Header';
 import TitleBar from './TitleBar';
 import About from './About';
@@ -15,14 +16,25 @@ import './App.css';
 
 
 class App extends Component {
+  constructor() {
+    super();
+    this.findAbout = this.findAbout.bind(this);
+    this.findPortfolio = this.findPortfolio.bind(this);
+  }
+  findAbout() {
+    return findDOMNode(this.refs['About']).getClientRects();
+  }
+  findPortfolio() {
+    return findDOMNode(this.refs['Portfolio']).getClientRects();
+  }
   render() {
     return (
       <div className="App">
         <Header />
-        <TitleBar />
+        <TitleBar findAbout={this.findAbout} findPortfolio={this.findPortfolio} />
         <div className="main-content">
-        <About />
-        <Portfolio />       
+        <About ref="About"/>
+        <Portfolio ref="Portfolio"/>       
         </div>
       </div>
     );

@@ -72,11 +72,24 @@
 }
 
 .titlebar-item {
-  margin: auto 2vw;
+  padding: 0 2vw;
+  margin: 0;
   font-weight: 500;
   font-size: 1.8vw;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  text-align: center;
   background: -webkit-linear-gradient(#eee, #333);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-shadow: 2px 2px rgba(67, 32, 160, .6);
+}
+
+.titlebar-item:hover {
+  cursor: pointer;
+  text-shadow: 2px 2px white;
+  border-bottom: 2px solid white;
+  opacity: .4;
 }
