@@ -3,6 +3,7 @@
   background-image: url('./5.jpg');
   background-repeat: repeat-x;
   background-size: 50% auto;
+  font-family: 'Pangolin', cursive;
 }
 
 .main-content {

@@ -1,0 +1,62 @@
+.portfolio-img {
+  height: 16vw;
+  margin: auto 40px;
+}
+
+.portfolio-img:hover {
+  cursor: pointer;
+}
+
+.portfolio-list {
+  margin-top: 6em;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  list-style: none;
+  overflow-x: scroll;
+  padding-left: 32vw;
+}
+
+.portfolio-list::-webkit-scrollbar {
+  display: none;
+}
+
+
+.scroll-arrow-left {
+  position: absolute;
+  right: 14%;
+  height: 10vw;
+  -webkit-transition: 0.4s;
+  -moz-transition: 0.4s;
+  -o-transition: 0.4s;
+  transition: 0.4s; 
+  opacity: .4;
+}
+
+.scroll-arrow-left:hover {
+  -webkit-transition: 0.4s;
+  -moz-transition: 0.4s;
+  -o-transition: 0.4s;
+  transition: 0.4s;
+  opacity: 1;
+  cursor: pointer;
+}
+.scroll-arrow-right{
+  position: absolute;
+  left: 14%;
+  height: 10vw;
+  transform: rotate(180deg);
+  -webkit-transition: 0.4s;
+  -moz-transition: 0.4s;
+  -o-transition: 0.4s;
+  transition: 0.4s;
+  opacity: .4;
+}
+.scroll-arrow-right:hover {
+  -webkit-transition: 0.4s;
+  -moz-transition: 0.4s;
+  -o-transition: 0.4s;
+  transition: 0.4s;
+  opacity: 1;
+  cursor: pointer;
+}

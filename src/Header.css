@@ -2,6 +2,7 @@
   height: 65vw;
   overflow: hidden;
   background-color: rgba(67, 32, 160, .8);
+  position: relative;
 }
 
 .header-titles {
@@ -15,7 +16,7 @@
 .arrow {
   height: 8vw;
   position: absolute;
-  top: 78%;
+  top: 65%;
   -webkit-transition: 0.4s;
   -moz-transition: 0.4s;
   -o-transition: 0.4s;
@@ -27,7 +28,7 @@
 .arrow-none {
   height: 8vw;
   position: absolute;
-  top: 78%;
+  top: 65%;
   -webkit-transition: 0.4s;
   -moz-transition: 0.4s;
   -o-transition: 0.4s;

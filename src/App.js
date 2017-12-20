@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Header from './Header';
 import TitleBar from './TitleBar';
 import About from './About';
+import Portfolio from './Portfolio';
 import logo from './logo.svg'; 
 import './App.css';
 
@@ -20,7 +21,8 @@ class App extends Component {
         <Header />
         <TitleBar />
         <div className="main-content">
-          <About />         
+        <About />
+        <Portfolio />       
         </div>
       </div>
     );
