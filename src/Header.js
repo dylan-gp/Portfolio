@@ -18,17 +18,12 @@ export default class Header extends React.Component {
     this.helloWorld = "Hello World";
     this.hideTitle = this.hideTitle.bind(this);
     this.arrowFlash = this.arrowFlash.bind(this);
+    this.writeHello = this.writeHello.bind(this);
   }
   componentDidMount() {
     window.addEventListener('scroll', this.hideTitle);
     setTimeout(() => this.setState({ hide: false }), 1000);
-    setTimeout(() => {
-      const int = setInterval(() => {
-        this.setState({hello: `${this.state.hello}${this.helloWorld.slice(0, 1)}`});
-        this.helloWorld = this.helloWorld.slice(1);
-        if (this.helloWorld.length === 0) clearInterval(int);
-      }, 100);
-    }, 1200);
+    this.writeHello();
     setTimeout(() => this.interval = setInterval(() => this.arrowFlash(), 1200), 1500);
   }
   componentWillUnmount() {
@@ -40,15 +35,26 @@ export default class Header extends React.Component {
     window.scrollY > 0 ?
       !this.state.hide ? this.setState({ hide: true }) : null:
       this.state.hide ? this.setState({ hide: false }) : null;
+    if (this.header.getBoundingClientRect().bottom <= 20 && this.state.hello === "Hello World") this.setState({ hello: "Hello Again" });
   }
 
   arrowFlash() {
     this.setState({ arrow: !this.state.arrow });
   }
+
+  writeHello() {
+    setTimeout(() => {
+      const int = setInterval(() => {
+        this.setState({hello: `${this.state.hello}${this.helloWorld.slice(0, 1)}`});
+        this.helloWorld = this.helloWorld.slice(1);
+        if (this.helloWorld.length === 0) clearInterval(int);
+      }, 100);
+    }, 1200);
+  }
   
   render() {
     return (
-      <div className="header" >
+      <div className="header" ref={(div) => this.header = div} >
         <div className="header-titles">
           <h1 className={this.state.hide ? "header-title-none" : "header-title"}>Full Stack</h1>
           <h1 className={this.state.hide ? "header-title-none" : "header-title"}>Software Engineer/Web Developer</h1>

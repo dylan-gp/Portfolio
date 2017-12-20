@@ -1,6 +1,6 @@
 .portfolio-img {
   height: 16vw;
-  margin: auto 40px;
+  margin: auto 4vw;
 }
 
 .portfolio-img:hover {
@@ -9,12 +9,14 @@
 
 .portfolio-list {
   margin-top: 6em;
+  padding: 0;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
+  align-items: center;
   list-style: none;
   overflow-x: scroll;
-  padding-left: 32vw;
+  min-width: 100%;
 }
 
 .portfolio-list::-webkit-scrollbar {
@@ -25,7 +27,7 @@
 .scroll-arrow-left {
   position: absolute;
   right: 14%;
-  height: 10vw;
+  height: 8vw;
   -webkit-transition: 0.4s;
   -moz-transition: 0.4s;
   -o-transition: 0.4s;
@@ -44,7 +46,7 @@
 .scroll-arrow-right{
   position: absolute;
   left: 14%;
-  height: 10vw;
+  height: 8vw;
   transform: rotate(180deg);
   -webkit-transition: 0.4s;
   -moz-transition: 0.4s;

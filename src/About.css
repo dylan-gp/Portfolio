@@ -9,6 +9,7 @@
 
 .about-container {
   width: 60vw;
+  overflow: hidden;
   margin: auto;
   border-top: 2px solid rgb(20, 20, 20);
   border-bottom: 2px solid rgb(20, 20, 20);

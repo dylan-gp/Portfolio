@@ -10,8 +10,8 @@
 .titlebar-container-fix {
   display: block;
   background-color: black;
-  min-height: 60px;
-  height: 7vw;
+  min-height: 40px;
+  height: 5vw;
   display: flex;
   align-items: center;
   border-bottom: 2px solid black;
@@ -23,8 +23,8 @@
 .titlebar-container-fix-fade {
   display: block;
   background-color: black;
-  min-height: 60px;
-  height: 7vw;
+  min-height: 40px;
+  height: 5vw;
   display: flex;
   align-items: center;
   border-bottom: 2px solid black;
@@ -46,8 +46,8 @@
   opacity: 1;
   display: block;
   background-color: black;
-  min-height: 60px;
-  height: 7vw;
+  min-height: 40px;
+  height: 5vw;
   display: flex;
   align-items: center;
   border-bottom: 2px solid black;
@@ -74,6 +74,7 @@
 .titlebar-item {
   margin: auto 2vw;
   font-weight: 500;
+  font-size: 1.8vw;
   background: -webkit-linear-gradient(#eee, #333);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
