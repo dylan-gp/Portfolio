@@ -1,10 +1,12 @@
 .titlebar-container {
-  background-color: black;
+  background-color: whitesmoke;
   min-height: 60px;
   height: 7vw;
   display: flex;
+  position: relative;
+  z-index:9999;
   align-items: center;
-  border-bottom: 2px solid black;
+  border-bottom: 2px outset whitesmoke;
 }
 
 .titlebar-container-fix {
@@ -14,8 +16,9 @@
   height: 5vw;
   display: flex;
   align-items: center;
-  border-bottom: 2px solid black;
+  border-bottom: 2px outset black;
   position:fixed;
+  z-index:9999;
   top: 0;
   width: 100%;
 }
@@ -27,15 +30,16 @@
   height: 5vw;
   display: flex;
   align-items: center;
-  border-bottom: 2px solid black;
+  border-bottom: 2px outset black;
   position:fixed;
   top: 0;
   width: 100%;
+  z-index:9999;
   -webkit-transition: 0.4s;
   -moz-transition: 0.4s;
   -o-transition: 0.4s;
   transition: 0.4s;
-  opacity: .2;
+  opacity: .4;
 }
 
 .titlebar-container-fix-fade:hover {
@@ -50,10 +54,11 @@
   height: 5vw;
   display: flex;
   align-items: center;
-  border-bottom: 2px solid black;
+  border-bottom: 2px outset black;
   position:fixed;
   top: 0;
   width: 100%;
+  z-index:9999;
 }
 
 
@@ -69,6 +74,8 @@
   height: 100%;
   margin: 0;
   padding: 0;
+  position: relative;
+  z-index:9999;
 }
 
 .titlebar-item {
@@ -81,10 +88,12 @@
   display: flex;
   align-items: center;
   text-align: center;
-  background: -webkit-linear-gradient(#eee, #333);
+  background: -webkit-linear-gradient(#000, #fff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-shadow: 2px 2px rgba(67, 32, 160, .6);
+  position: relative;
+  z-index:9999;
 }
 
 .titlebar-item:hover {

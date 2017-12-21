@@ -1,6 +1,7 @@
 .about-title {
   font-size: 6vw;
   margin-top: 0;
+  text-align: center;
 }
 
 .about-text {
@@ -11,9 +12,16 @@
   width: 60vw;
   overflow: hidden;
   margin: auto;
+  position:relative;
+  z-index:99;
   border-top: 2px solid rgb(20, 20, 20);
   border-bottom: 2px solid rgb(20, 20, 20);
   padding-bottom: 4em;
+}
+
+.about-pic-container {
+  display: flex;
+  justify-content: center;
 }
 
 .about-pic {

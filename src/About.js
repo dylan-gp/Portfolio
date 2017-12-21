@@ -8,7 +8,9 @@ export default class About extends React.Component {
     return (
       <div className="about-container">
         <h1 className="about-title">aboutDylan</h1>
-        <img className="about-pic" src={mypicture} />
+        <div className="about-pic-container">
+          <img className="about-pic" src={mypicture} />
+        </div>
         <div className="about-row">
           <div className="about-row-item">
             <h2 className="about-item-title">I'm Dylan Scheidt, an aspiring software engineer</h2>

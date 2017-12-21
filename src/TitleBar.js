@@ -37,16 +37,16 @@ export default class TitleBar extends React.Component {
         <ul className="titlebar-list">
           <li onClick={this.moveToAbout} className="titlebar-item">About</li>
           <li onClick={this.moveToPortfolio} className="titlebar-item">Portfolio</li>
-          <li className="titlebar-item">Skills</li>
-          <li className="titlebar-item">Resume</li>
+          <li onClick={this.moveToPortfolio} className="titlebar-item">Skills</li>
+          <li onClick={this.moveToPortfolio} className="titlebar-item">Resume</li>
         </ul>
         </div>
         <div ref={(div) => this.titlebar = div} className="titlebar-container-fix-hide">
         <ul className="titlebar-list">
           <li onClick={this.moveToAbout} className="titlebar-item">About</li>
           <li onClick={this.moveToPortfolio} className="titlebar-item">Portfolio</li>
-          <li className="titlebar-item">Skills</li>
-          <li className="titlebar-item">Resume</li>
+          <li onClick={this.moveToPortfolio} className="titlebar-item">Skills</li>
+          <li onClick={this.moveToPortfolio} className="titlebar-item">Resume</li>
         </ul>
         </div>
       </div>

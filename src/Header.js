@@ -1,4 +1,5 @@
 import React from 'react';
+import Particles from 'react-particles-js';
 import mypicture from './mypicture.jpg';
 import linkedinLogo from './In-White-128px-TM.png';
 import githubLogo from './GitHub-Mark-Light-120px-plus.png';
@@ -55,10 +56,46 @@ export default class Header extends React.Component {
   render() {
     return (
       <div className="header" ref={(div) => this.header = div} >
+        <Particles params={{
+                                particles: {
+                                    number: {
+                                        value: 100
+                                    },
+                                    line_linked: {
+                                        shadow: {
+                                            enable: false,
+                                            color: "#3CA9D1",
+                                            blur: 5
+                                        }
+                                    }
+                                },
+                                interactivity: {
+                                  detect_on: "window",
+                                  events: {
+                                    onhover: {
+                                      enable: true,
+                                      mode: "repulse"
+                                    }
+                                  },
+                                  modes: {
+                                    repulse: {
+                                      distance: 100,
+                                      duration: 0.4
+                                    }
+                                  }
+                                }
+                            }}
+              style={{
+                                position: "fixed",
+                                top: 0,
+                                left: 0,
+                                width: "100%",
+                                height: "100%"
+                            }}/>  
         <div className="header-titles">
           <h1 className={this.state.hide ? "header-title-none" : "header-title"}>Full Stack</h1>
           <h1 className={this.state.hide ? "header-title-none" : "header-title"}>Software Engineer/Web Developer</h1>
-          <h2>{this.state.hello}</h2>
+          <h2 className="header-hello">{this.state.hello}</h2>
         </div>
         <img className={this.state.arrow ? "arrow" : "arrow-none"} src={arrow} />
         <div className="header-links">

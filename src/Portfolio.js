@@ -14,12 +14,19 @@ export default class Portfolio extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      codersCode: false
+      codersCode: false,
+      hideLeft: true,
+      hideRight: false
     }
     this.scroll = this.scroll.bind(this);
     this.popUp = this.popUp.bind(this);
     this.popDown = this.popDown.bind(this);
+    this.arrowVisibility = this.arrowVisibility.bind(this);
   };
+
+  componentDidMount() {
+    this.list.addEventListener('scroll', this.arrowVisibility);
+  }
 
   popUp(piece) {
     if (piece === 'coders') this.setState({ codersCode: true });
@@ -29,8 +36,17 @@ export default class Portfolio extends React.Component {
     if (piece === 'coders') this.setState({ codersCode: false });
   }
 
+  arrowVisibility() {
+    const width = window.innerWidth * .32;
+    if (this.list.scrollLeft === 0 && !this.state.hideLeft) this.setState({ hideLeft: true });
+    if (this.list.scrollLeft > 0 && this.state.hideLeft) this.setState({ hideLeft: false });
+    if (this.list.scrollLeft >= Math.floor(width * 2) && !this.state.hideRight) this.setState({ hideRight: true });
+    if (this.list.scrollLeft < Math.floor(width * 2) && this.state.hideRight) this.setState({ hideRight: false });
+  }
   scroll(boo) {
-    this.interval = setInterval(() => boo ? this.list.scrollLeft++ : this.list.scrollLeft--, 1);
+    const width = Math.round(window.innerWidth * .32);
+    boo ? this.list.scrollLeft += width : this.list.scrollLeft -= width;
+    // this.interval = setInterval(() => boo ? this.list.scrollLeft += window.innerWidth * .32 : this.list.scrollLeft -= window.innerWidth * .32, 1);
   }
 
   unscroll() {
@@ -41,7 +57,7 @@ export default class Portfolio extends React.Component {
       <div className="about-container">
         <h1 className="about-title">dylansPortfolio</h1>
         <ul ref={(ul) => this.list = ul } className="portfolio-list">
-          <img className="scroll-arrow-left" onMouseDown={() => this.scroll(true)} onMouseUp={() => this.unscroll()} src={arrow} />
+          <img className={this.state.hideLeft ? "scroll-arrow-left-hide" : "scroll-arrow-left"} onClick={() => this.scroll(false)} src={arrow} />
           <li>
             <img className="portfolio-img" onClick={() => this.popUp('coders')} src={CodersCodeImg} />
           </li>
@@ -61,7 +77,7 @@ export default class Portfolio extends React.Component {
           <li>
             <img className="portfolio-img" src={Friends} />
           </li>
-          <img className="scroll-arrow-right" onMouseDown={() => this.scroll(false)} onMouseUp={() => this.unscroll()} src={arrow} />
+          <img className={this.state.hideRight ? "scroll-arrow-right-hide" : "scroll-arrow-right"} onClick={() => this.scroll(true)} src={arrow} />
         </ul>
       </div>
     )

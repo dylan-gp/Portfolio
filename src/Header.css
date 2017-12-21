@@ -3,6 +3,7 @@
   overflow: hidden;
   background-color: rgba(67, 32, 160, .8);
   position: relative;
+  z-index: 3;
 }
 
 .header-titles {
@@ -13,10 +14,20 @@
   justify-content: center;
 }
 
+.header-hello {
+  font-size: 3vw;
+  color: black;
+  display: flex;
+  align-self: center;
+   -webkit-text-fill-color: rgba(255, 255, 255, 0); /* Will override color (regardless of order) */
+   -webkit-text-stroke-width: 1px;
+   -webkit-text-stroke-color: black;
+}
 .arrow {
   height: 8vw;
   position: absolute;
   top: 65%;
+  left: 50%;
   -webkit-transition: 0.4s;
   -moz-transition: 0.4s;
   -o-transition: 0.4s;
@@ -29,6 +40,7 @@
   height: 8vw;
   position: absolute;
   top: 65%;
+  left: 50%;
   -webkit-transition: 0.4s;
   -moz-transition: 0.4s;
   -o-transition: 0.4s;
@@ -46,11 +58,15 @@
   -o-transition: 0.8s;
   transition: 0.8s;
   opacity: 1;
+  display: flex;
+  align-self: center;
   visibility: visible; 
   text-shadow: 2px 2px rgba(255, 255, 255, .6);
 }
 
 .header-title-none {
+  display: flex;
+  align-self: center;
   -webkit-transition: 0.8s;
   -moz-transition: 0.8s;
   -o-transition: 0.8s;
@@ -67,8 +83,11 @@
   justify-content: center;
   align-items: center;
   align-content: center;
+  position:relative;
+  z-index:9999;
 }
 .header-icon {
   height: 5vw;
   margin: auto .6vw;
+  
 }
