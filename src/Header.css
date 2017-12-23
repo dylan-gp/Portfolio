@@ -52,6 +52,7 @@
 .header-title {
   padding: 0;
   margin: .6vw auto;
+  text-align: center;
   font-size: 7vmin;
   -webkit-transition: 0.8s;
   -moz-transition: 0.8s;

@@ -14,8 +14,6 @@
   margin: auto;
   position:relative;
   z-index:99;
-  border-top: 2px solid rgb(20, 20, 20);
-  border-bottom: 2px solid rgb(20, 20, 20);
   padding-bottom: 4em;
 }
 

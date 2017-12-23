@@ -39,7 +39,7 @@
   -moz-transition: 0.4s;
   -o-transition: 0.4s;
   transition: 0.4s;
-  opacity: .4;
+  opacity: 0;
 }
 
 .titlebar-container-fix-fade:hover {
@@ -88,9 +88,26 @@
   display: flex;
   align-items: center;
   text-align: center;
-  background: -webkit-linear-gradient(#000, #fff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  -webkit-text-fill-color: white; /* Will override color (regardless of order) */
+   -webkit-text-stroke-width: .2vw;
+   -webkit-text-stroke-color: black;
+  text-shadow: 2px 2px rgba(67, 32, 160, .6);
+  position: relative;
+  z-index:9999;
+}
+.titlebar-item-fix {
+  padding: 0 2vw;
+  margin: 0;
+  font-weight: 100;
+  font-size: 1.8vw;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  -webkit-text-fill-color: black; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: .2vw;
+  -webkit-text-stroke-color: white;
   text-shadow: 2px 2px rgba(67, 32, 160, .6);
   position: relative;
   z-index:9999;
@@ -99,6 +116,12 @@
 .titlebar-item:hover {
   cursor: pointer;
   text-shadow: 2px 2px white;
+  border-bottom: 2px solid black;
+  opacity: .4;
+}
+.titlebar-item-fix:hover {
+  cursor: pointer;
+  text-shadow: 2px 2px black;
   border-bottom: 2px solid white;
   opacity: .4;
 }
