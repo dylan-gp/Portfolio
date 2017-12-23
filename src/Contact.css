@@ -1,4 +1,6 @@
 .contact-list {
+  position: relative;
+  z-index: 1;
   list-style: none;
   padding: 0;
   display: flex;
@@ -12,12 +14,15 @@
   font-size: 3vw;
 }
 
+
 .contact-textarea {
   width: 50vw;
 }
 
 form {
   display: flex;
+  position: relative;
+  z-index: 1;
   flex-direction: column;
   justify-content: center;
   width: 100%;

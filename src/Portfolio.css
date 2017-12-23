@@ -8,6 +8,16 @@
   cursor: pointer;
 }
 
+.port-container {
+  width: 60vw;
+  overflow: hidden;
+  margin: auto;
+  position: relative;
+  z-index: 100;
+  padding-bottom: 4em;
+  padding-top: 4em;
+}
+
 .portfolio-list {
   margin-top: 6em;
   padding: 0;

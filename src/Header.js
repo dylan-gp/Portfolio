@@ -50,7 +50,7 @@ export default class Header extends React.Component {
         this.helloWorld = this.helloWorld.slice(1);
         if (this.helloWorld.length === 0) clearInterval(int);
       }, 100);
-    }, 1200);
+    }, 1500);
   }
   
   render() {
@@ -59,7 +59,7 @@ export default class Header extends React.Component {
         <Particles params={{
                                 particles: {
                                     number: {
-                                        value: 100
+                                        value: 80
                                     },
                                     line_linked: {
                                         shadow: {

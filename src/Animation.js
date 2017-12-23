@@ -21,14 +21,14 @@ export default class Animation extends React.Component {
     this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     const hemLight = new THREE.HemisphereLight(0xffffff, 0xc61aff, 0.5);
     this.scene.add(hemLight);
-    hemLight.castShadow = true;
+    // hemLight.castShadow = true;
     const pointLight = new THREE.PointLight(0xb5b5fd, 0.5, 200);
     this.scene.add(pointLight);
     pointLight.castShadow = true;
-    pointLight.shadow = new THREE.LightShadow(new THREE.PerspectiveCamera(100, 1, 500, 1000));
-    pointLight.shadow.bias = 0.0001;
-    pointLight.shadow.mapSize.width = 2048;
-    pointLight.shadow.mapSize.height = 2048;
+    // pointLight.shadow = new THREE.LightShadow(new THREE.PerspectiveCamera(100, 1, 500, 1000));
+    // pointLight.shadow.bias = 0.0001;
+    // pointLight.shadow.mapSize.width = this.width;
+    // pointLight.shadow.mapSize.height = this.height;
     this.speaker();
     this.text();
     this.shape();
@@ -42,10 +42,10 @@ export default class Animation extends React.Component {
     this.renderer.receiveShadow = true;
     this.spotLight = new THREE.SpotLight( 0xee82ee, 4.0, 1000, 0.9, 0.0);
     this.spotLight.castShadow = true;
-    this.spotLight.shadow = new THREE.LightShadow(new THREE.PerspectiveCamera(75, 1, 10, 1000));
-    this.spotLight.shadow.bias = 0.0001;
-    this.spotLight.shadow.mapSize.width = 2048;
-    this.spotLight.shadow.mapSize.height = 2048;
+    // this.spotLight.shadow = new THREE.LightShadow(new THREE.PerspectiveCamera(75, 1, 10, 1000));
+    // this.spotLight.shadow.bias = 0.0001;
+    // this.spotLight.shadow.mapSize.width = this.width;
+    // this.spotLight.shadow.mapSize.height = this.height;
     
     this.spotLight.position.setZ(-20);
     this.spotLight.position.setY(40);
@@ -177,9 +177,9 @@ export default class Animation extends React.Component {
 
   render() {
     return (
-      <div style={{ position: 'relative', zIndex: 9999, width: window.innerWidth, height: window.innerHeight }}
+      <div style={{ position: 'relative', zIndex: 99, width: window.innerWidth, height: window.innerHeight }}
       ref={(mount) => this.mount = mount }
-      />
+      ></div>
     )
   }
 }

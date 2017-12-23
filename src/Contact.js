@@ -10,7 +10,7 @@ export default class Contact extends React.Component {
     return (
       <div className="about-container" >
         <h1 className="about-title">contactForm</h1>
-        <form>
+        <form className="contact-form" >
           <ul className="contact-list">
             <li>
               <p>Your Name</p>

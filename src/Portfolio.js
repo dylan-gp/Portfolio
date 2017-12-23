@@ -54,7 +54,7 @@ export default class Portfolio extends React.Component {
   }
   render() {
     return (
-      <div className="about-container">
+      <div className="port-container">
         <h1 className="about-title">dylansPortfolio</h1>
         <ul ref={(ul) => this.list = ul } className="portfolio-list">
           <img className={this.state.hideLeft ? "scroll-arrow-left-hide" : "scroll-arrow-left"} onClick={() => this.scroll(false)} src={arrow} />

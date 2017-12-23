@@ -32,7 +32,7 @@ class App extends Component {
           params={{
             particles: {
               number: {
-                value: 8,
+                value: 6,
                 density: {
                 enable: true,
                 value_area: 800
@@ -93,7 +93,7 @@ class App extends Component {
                             <Particles params={{
                                 particles: {
                                     number: {
-                                        value: 8,
+                                        value: 6,
                                         density: {
                                           enable: true,
                                           value_area: 800
@@ -158,7 +158,7 @@ class App extends Component {
         <About ref="About"/>
         <Animation />
         <Portfolio ref="Portfolio"/>
-        <Contact />
+        <Contact ref="Contact"/>
         </div>
         
       </div>
