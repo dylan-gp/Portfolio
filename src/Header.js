@@ -23,9 +23,9 @@ export default class Header extends React.Component {
   }
   componentDidMount() {
     window.addEventListener('scroll', this.hideTitle);
-    setTimeout(() => this.setState({ hide: false }), 1000);
+    setTimeout(() => this.setState({ hide: false }), 2000);
     this.writeHello();
-    setTimeout(() => this.interval = setInterval(() => this.arrowFlash(), 1200), 1500);
+    setTimeout(() => this.interval = setInterval(() => this.arrowFlash(), 1200), 3500);
   }
   componentWillUnmount() {
     window.removeEventListener('scroll', this.hideTitle);
@@ -37,6 +37,7 @@ export default class Header extends React.Component {
       !this.state.hide ? this.setState({ hide: true }) : null:
       this.state.hide ? this.setState({ hide: false }) : null;
     if (this.header.getBoundingClientRect().bottom <= 20 && this.state.hello === "Hello World") this.setState({ hello: "Hello Again" });
+    if (window.scrollY >= 700) clearInterval(this.interval);
   }
 
   arrowFlash() {
@@ -50,7 +51,7 @@ export default class Header extends React.Component {
         this.helloWorld = this.helloWorld.slice(1);
         if (this.helloWorld.length === 0) clearInterval(int);
       }, 100);
-    }, 1500);
+    }, 2500);
   }
   
   render() {

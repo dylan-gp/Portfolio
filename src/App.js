@@ -13,10 +13,22 @@ import Particles from 'react-particles-js';
 class App extends Component {
   constructor() {
     super();
+    this.state = {
+      show: false
+    }
     this.findAbout = this.findAbout.bind(this);
     this.findPortfolio = this.findPortfolio.bind(this);
+    this.addComponent = this.addComponent.bind(this);
   }
-
+  componentDidMount() {
+    window.addEventListener('scroll', this.addComponent);
+  }
+  componentWillUnMount() {
+    window.removeEventListener('scroll', this.addComponent);
+  }
+  addComponent() {
+    window.scrollY >= 700 ? this.setState({show: true}) : this.setState({show: false});
+  }
   findAbout() {
     return findDOMNode(this.refs['About']).getClientRects();
   }
@@ -32,10 +44,10 @@ class App extends Component {
           params={{
             particles: {
               number: {
-                value: 6,
+                value: 4,
                 density: {
                 enable: true,
-                value_area: 800
+                value_area: 2000
               }
             },
             size: {
@@ -93,10 +105,10 @@ class App extends Component {
                             <Particles params={{
                                 particles: {
                                     number: {
-                                        value: 6,
+                                        value: 4,
                                         density: {
                                           enable: true,
-                                          value_area: 800
+                                          value_area: 2000
                                         }
                                     },
                                     size: {
@@ -154,7 +166,7 @@ class App extends Component {
         <Header />
         <TitleBar findAbout={this.findAbout} findPortfolio={this.findPortfolio} />
         <div className="main-content">
-           
+        
         <About ref="About"/>
         <Animation />
         <Portfolio ref="Portfolio"/>

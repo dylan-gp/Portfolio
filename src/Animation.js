@@ -4,6 +4,7 @@ import * as THREE from 'three';
 export default class Animation extends React.Component {
   constructor(props) {
     super(props);
+    this.play = false;
     this.start = this.start.bind(this);
     this.stop = this.stop.bind(this);
     this.animate = this.animate.bind(this);
@@ -11,6 +12,10 @@ export default class Animation extends React.Component {
     this.shape = this.shape.bind(this);
     this.plane = this.plane.bind(this);
     this.speaker = this.speaker.bind(this);
+    this.light = this.light.bind(this);
+    this.partyText = this.partyText.bind(this);
+    this.cycleOpacity = this.cycleOpacity.bind(this);
+    this.changeLightColor = this.changeLightColor.bind(this);
   }
   componentDidMount() {
     this.delta = 0;
@@ -21,14 +26,9 @@ export default class Animation extends React.Component {
     this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     const hemLight = new THREE.HemisphereLight(0xffffff, 0xc61aff, 0.5);
     this.scene.add(hemLight);
-    // hemLight.castShadow = true;
-    const pointLight = new THREE.PointLight(0xb5b5fd, 0.5, 200);
-    this.scene.add(pointLight);
-    pointLight.castShadow = true;
-    // pointLight.shadow = new THREE.LightShadow(new THREE.PerspectiveCamera(100, 1, 500, 1000));
-    // pointLight.shadow.bias = 0.0001;
-    // pointLight.shadow.mapSize.width = this.width;
-    // pointLight.shadow.mapSize.height = this.height;
+    // const pointLight = new THREE.PointLight(0xb5b5fd, 0.5, 200);
+    // this.scene.add(pointLight);  maybe turn this on
+    // pointLight.castShadow = true;
     this.speaker();
     this.text();
     this.shape();
@@ -42,11 +42,6 @@ export default class Animation extends React.Component {
     this.renderer.receiveShadow = true;
     this.spotLight = new THREE.SpotLight( 0xee82ee, 4.0, 1000, 0.9, 0.0);
     this.spotLight.castShadow = true;
-    // this.spotLight.shadow = new THREE.LightShadow(new THREE.PerspectiveCamera(75, 1, 10, 1000));
-    // this.spotLight.shadow.bias = 0.0001;
-    // this.spotLight.shadow.mapSize.width = this.width;
-    // this.spotLight.shadow.mapSize.height = this.height;
-    
     this.spotLight.position.setZ(-20);
     this.spotLight.position.setY(40);
     this.spotLight.position.setX(-40);
@@ -55,9 +50,10 @@ export default class Animation extends React.Component {
     this.scene.add( this.spotLight.target );
    // var helper = new THREE.CameraHelper( this.spotLight.shadow.camera );
     //this.scene.add( helper );
-
-    
-    
+    this.scene.fog = new THREE.Fog( 0xf2f7ff, 1, 1000);
+    this.upDown = false;
+    this.light();
+    this.partyText();
     this.renderer.setPixelRatio(window.devicePixelRatio);
     this.renderer.setSize(this.width, this.height);
     this.mount.appendChild(this.renderer.domElement);
@@ -65,6 +61,8 @@ export default class Animation extends React.Component {
   }
   componentWillUnmount() {
     this.stop();
+    window.removeEventListener('mousedown', this.onDocumentMouseDown);
+    window.removeEventListener('touchstart', this.onDocumentTouchStart);
     this.mount.removeChild(this.renderer.domElement);
   }
   start() {
@@ -115,10 +113,36 @@ export default class Animation extends React.Component {
     this.delta += 0.1;
     this.shapeOne.rotateY(0.01);
     this.shapeOne.rotateX(0.003);
+    if (this.play && this.partyMesh.visible) this.partyMesh.visible = false;
+    if (!this.play && this.partyMesh && !this.partyMesh.visible) this.partyMesh.visible = true;
+    if (this.play) this.changeLightColor();
+    if (this.partyMesh) this.cycleOpacity();
     this.frameId = window.requestAnimationFrame(this.animate);
   }
   renderScene() {
     this.renderer.render(this.scene, this.camera);
+  }
+  cycleOpacity() {
+    if (this.partyMesh.position.y >= -20) this.positionUp = false;
+    if (this.partyMesh.position.y <= -30) this.positionUp = true;
+    this.positionUp ? this.partyMesh.position.y += 0.5 : this.partyMesh.position.y -= 0.5;
+    if (this.partyMesh.material.opacity >= 1) this.upDown = true;
+    if (this.partyMesh.material.opacity <= 0) this.upDown = false;
+    if (this.partyMesh.material.opacity > 0 && this.upDown) this.partyMesh.material.opacity -= 0.1;
+    if (this.partyMesh.material.opacity < 1 && !this.upDown) this.partyMesh.material.opacity += 0.1;
+  }
+  light() {
+    this.spotLightColor = new THREE.SpotLight( 0x08FF00, 10, 1000, 0.9, 0.0);
+    this.spotLightColor.castShadow = true;
+    this.spotLightColor.position.setZ(0);
+    this.spotLightColor.position.setY(200);
+    this.spotLightColor.position.setX(0);
+    this.spotLightColor.target.position.set(0, -100, -200);
+    this.scene.add(this.spotLightColor);
+  }
+  changeLightColor() {
+    const randomColor = Math.random() * 0xffffff;
+		this.spotLightColor.color.setHex(randomColor);
   }
   plane() {
     const geometry = new THREE.PlaneGeometry(10000, 10000, 100, 100);
@@ -135,6 +159,24 @@ export default class Animation extends React.Component {
     mesh.position.y = -100;
     mesh.receiveShadow = true;
     this.scene.add(mesh);
+  }
+  partyText() {
+    const loader = new THREE.FontLoader();
+     loader.load('fonts/gentilis_regular.typeface.json', (font) => {
+      const geometry = new THREE.TextGeometry("Click To Party",
+        {font: font, size: 3, height: 0.5, bevelEnabled: true, curveSegments: 3, bevelThickness: 0.1, bevelSize: 0.2, bevelSegments: 3 });
+      const texture = new THREE.TextureLoader().load('textures/perlin-512.png');
+      texture.wrapS = THREE.RepeatWrapping;
+      texture.wrapT = THREE.RepeatWrapping;
+      const material = new THREE.MeshLambertMaterial({
+        map: texture 
+    });
+      this.partyMesh = new THREE.Mesh(geometry, material);
+      this.partyMesh.position.y = -30;
+      this.partyMesh.position.x = -5;
+      this.partyMesh.position.z = -25; 
+      this.scene.add(this.partyMesh);
+    });
   }
   text() {
     const loader = new THREE.FontLoader();
@@ -157,7 +199,6 @@ export default class Animation extends React.Component {
       this.scene.add(mesh);
       const light = new THREE.DirectionalLight(0xee82ee, 20.0);
       light.target = mesh;
-      this.scene.add(mesh);
     });
   }
     shape() {
@@ -167,17 +208,15 @@ export default class Animation extends React.Component {
           map: new THREE.TextureLoader().load('textures/moon_1024.jpg'),
           normalMap: new THREE.TextureLoader().load('textures/moon_1024.jpg')
         }));
-      this.shapeOne.position.z = -800;
-      this.shapeOne.position.x = 800;
-      this.shapeOne.position.y = 430;
+      this.shapeOne.position.z = -500;
+      this.shapeOne.position.x = 500;
+      this.shapeOne.position.y = 300;
       this.shapeOne.castShadow = true;
       this.scene.add(this.shapeOne);
     }
-
-
   render() {
     return (
-      <div style={{ position: 'relative', zIndex: 99, width: window.innerWidth, height: window.innerHeight }}
+      <div onClick={() => this.play = !this.play} style={{ position: 'relative',  zIndex: 99, width: window.innerWidth, height: window.innerHeight, cursor: 'pointer' }}
       ref={(mount) => this.mount = mount }
       ></div>
     )
