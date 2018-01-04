@@ -4,9 +4,9 @@ import Header from './Header';
 import TitleBar from './TitleBar';
 import About from './About';
 import Animation from './Animation';
+import SecondAnim from './SecondAnim';
 import Portfolio from './Portfolio';
 import Contact from './Contact';
-import logo from './logo.svg'; 
 import Particles from 'react-particles-js';
 
 
@@ -34,6 +34,9 @@ class App extends Component {
   }
   findPortfolio() {
     return findDOMNode(this.refs['Portfolio']).getClientRects();
+  }
+  findContact() {
+    return findDOMNode(this.refs['Contact']).getClientRects();
   }
   render() {
     return (
@@ -164,12 +167,13 @@ class App extends Component {
                                 height: "100%"
                             }}/>  
         <Header />
-        <TitleBar findAbout={this.findAbout} findPortfolio={this.findPortfolio} />
+        <TitleBar findAbout={this.findAbout} findPortfolio={this.findPortfolio} findContact={this.findContact} />
         <div className="main-content">
         
         <About ref="About"/>
         <Animation />
         <Portfolio ref="Portfolio"/>
+        <SecondAnim />
         <Contact ref="Contact"/>
         </div>
         

@@ -7,6 +7,7 @@ export default class TitleBar extends React.Component {
     this.titleBarFix = this.titleBarFix.bind(this);
     this.moveToAbout = this.moveToAbout.bind(this);
     this.moveToPortfolio = this.moveToPortfolio.bind(this);
+    this.moveToContact = this.moveToContact.bind(this);
   }
 
   componentDidMount() {
@@ -30,6 +31,9 @@ export default class TitleBar extends React.Component {
   moveToPortfolio() {
     window.scrollTo(0, window.scrollY + this.props.findPortfolio()[0].y - 70);
   }
+  moveToContact() {
+    window.scrollTo(0, window.scrollY + this.props.findContact()[0].y - 70);
+  }
   render() {
     return (
       <div>
@@ -37,16 +41,14 @@ export default class TitleBar extends React.Component {
         <ul className="titlebar-list">
           <li onClick={this.moveToAbout} className="titlebar-item">About</li>
           <li onClick={this.moveToPortfolio} className="titlebar-item">Portfolio</li>
-          <li onClick={this.moveToPortfolio} className="titlebar-item">Skills</li>
-          <li onClick={this.moveToPortfolio} className="titlebar-item">Resume</li>
+          <li onClick={this.moveToContact} className="titlebar-item">Contact</li>
         </ul>
         </div>
         <div ref={(div) => this.titlebar = div} className="titlebar-container-fix-hide">
         <ul className="titlebar-list">
           <li onClick={this.moveToAbout} className="titlebar-item-fix">About</li>
           <li onClick={this.moveToPortfolio} className="titlebar-item-fix">Portfolio</li>
-          <li onClick={this.moveToPortfolio} className="titlebar-item-fix">Skills</li>
-          <li onClick={this.moveToPortfolio} className="titlebar-item-fix">Resume</li>
+          <li onClick={this.moveToContact} className="titlebar-item-fix">Contact</li>
         </ul>
         </div>
       </div>

@@ -1,6 +1,5 @@
 import React from 'react';
 import './Piece.css';
-import CodersCodeImg from './CodersCode.png';
 import closeIcon from './closeIcon.png';
 import githubIconLight from './GitHub-Mark-Light-120px-plus.png'
 import githubIconDark from './GitHub-Mark-120px-plus.png'
@@ -24,19 +23,22 @@ export default class Piece extends React.Component {
     return (
       <div className="piece">
         <div className="piece-container">
-          <img className="close-icon" src={closeIcon} onClick={() => this.props.popDown('coders')} />
+          <img className="close-icon" alt="close" src={closeIcon} onClick={() => this.props.popDown('coders')} />
           <div className="piece-img-container" >
             <img className="piece-img" 
+              alt="portfolio piece example"
               ref={(img) => this.piece = img}
               src={this.props.image1}
             />
           </div>
           <div className="small-piece-container">
             <img className="small-piece-img"
+              alt="porfolio piece example"
               src={this.props.image2}
               onClick={(e) => this.swapImg(e)}
             />
             <img className="small-piece-img"
+              alt="porfolio piece example"
               src={this.props.image3}
               onClick={(e) => this.swapImg(e)}
             />
@@ -44,18 +46,18 @@ export default class Piece extends React.Component {
           <div className="piece-icons" >
             {this.props.githubClient ? 
               <a href={this.props.githubClient}>
-                <img className="piece-gh-icon-light" src={githubIconLight} />
+                <img className="piece-gh-icon-light" alt="github frontend" src={githubIconLight} />
               </a> :
               ''
             }
             {this.props.githubAPI ? 
               <a href={this.props.githubAPI}>
-                <img className="piece-gh-icon-dark" src={githubIconDark} />
+                <img className="piece-gh-icon-dark" alt="github backend" src={githubIconDark} />
               </a> :
               ''
             }
             <a href={this.props.pageLink}>
-              <img className="goto-icon" src={goto}/>
+              <img className="goto-icon" alt="go to piece" src={goto}/>
             </a>
           </div>
         </div>

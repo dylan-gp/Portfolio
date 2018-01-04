@@ -1,6 +1,5 @@
 import React from 'react';
 import Particles from 'react-particles-js';
-import mypicture from './mypicture.jpg';
 import linkedinLogo from './In-White-128px-TM.png';
 import githubLogo from './GitHub-Mark-Light-120px-plus.png';
 import arrow from './59691.png';
@@ -14,7 +13,8 @@ export default class Header extends React.Component {
     this.state = {
       hide: true,
       arrow: false,
-      hello: ""
+      hello: "",
+      particle: true,
     }
     this.helloWorld = "Hello World";
     this.hideTitle = this.hideTitle.bind(this);
@@ -98,13 +98,13 @@ export default class Header extends React.Component {
           <h1 className={this.state.hide ? "header-title-none" : "header-title"}>Software Engineer/Web Developer</h1>
           <h2 className="header-hello">{this.state.hello}</h2>
         </div>
-        <img className={this.state.arrow ? "arrow" : "arrow-none"} src={arrow} />
+        <img className={this.state.arrow ? "arrow" : "arrow-none"} alt="down arrow" src={arrow} />
         <div className="header-links">
           <a href="https://www.linkedin.com/in/dylanscheidt">
-            <img className="header-icon" src={linkedinLogo} />
+            <img className="header-icon" alt="linkedin" src={linkedinLogo} />
           </a>
           <a href="https://github.com/dys2" >
-            <img className="header-icon" src={githubLogo} />
+            <img className="header-icon" alt="github" src={githubLogo} />
           </a>
         </div>
       </div>

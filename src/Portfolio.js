@@ -57,9 +57,17 @@ export default class Portfolio extends React.Component {
       <div className="port-container">
         <h1 className="about-title">dylansPortfolio</h1>
         <ul ref={(ul) => this.list = ul } className="portfolio-list">
-          <img className={this.state.hideLeft ? "scroll-arrow-left-hide" : "scroll-arrow-left"} onClick={() => this.scroll(false)} src={arrow} />
+          <img 
+            className={this.state.hideLeft ? "scroll-arrow-left-hide" : "scroll-arrow-left"} 
+            onClick={() => this.scroll(false)} src={arrow} 
+            alt="go left"
+          />
           <li>
-            <img className="portfolio-img" onClick={() => this.popUp('coders')} src={CodersCodeImg} />
+            <img 
+              className="portfolio-img"
+              onClick={() => this.popUp('coders')} src={CodersCodeImg}
+              alt="Coders Code"
+            />
           </li>
           {this.state.codersCode ? 
             <Piece
@@ -72,12 +80,16 @@ export default class Portfolio extends React.Component {
               pageLink="http://www.thecoderscode.com/"
             /> : ''}
           <li>
-            <img className="portfolio-img" src={Todo} />
+            <img className="portfolio-img" src={Todo} alt="to do list" />
           </li>
           <li>
-            <img className="portfolio-img" src={Friends} />
+            <img className="portfolio-img" src={Friends} alt="friends list" />
           </li>
-          <img className={this.state.hideRight ? "scroll-arrow-right-hide" : "scroll-arrow-right"} onClick={() => this.scroll(true)} src={arrow} />
+          <img
+            className={this.state.hideRight ? "scroll-arrow-right-hide" : "scroll-arrow-right"}
+            onClick={() => this.scroll(true)} src={arrow}
+            alt="go right"
+            />
         </ul>
       </div>
     )

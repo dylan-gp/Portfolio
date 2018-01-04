@@ -5,6 +5,7 @@ export default class Animation extends React.Component {
   constructor(props) {
     super(props);
     this.play = false;
+    this.music = false;
     this.start = this.start.bind(this);
     this.stop = this.stop.bind(this);
     this.animate = this.animate.bind(this);
@@ -16,12 +17,14 @@ export default class Animation extends React.Component {
     this.partyText = this.partyText.bind(this);
     this.cycleOpacity = this.cycleOpacity.bind(this);
     this.changeLightColor = this.changeLightColor.bind(this);
+    this.resize = this.resize.bind(this);
   }
   componentDidMount() {
     this.delta = 0;
+    this.audio = new Audio('bensound-dubstep.mp3');
     this.scene = new THREE.Scene();
     this.width = window.innerWidth;
-    this.height = window.innerHeight;
+    this.height = this.width * 9/16;
     this.camera = new THREE.PerspectiveCamera(75, this.width/this.height, 10, 1000);
     this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     const hemLight = new THREE.HemisphereLight(0xffffff, 0xc61aff, 0.5);
@@ -57,6 +60,8 @@ export default class Animation extends React.Component {
     this.renderer.setPixelRatio(window.devicePixelRatio);
     this.renderer.setSize(this.width, this.height);
     this.mount.appendChild(this.renderer.domElement);
+    window.addEventListener('resize', this.resize);
+    // window.addEventListener('scroll', this.animate);
     this.start();
   }
   componentWillUnmount() {
@@ -64,6 +69,8 @@ export default class Animation extends React.Component {
     window.removeEventListener('mousedown', this.onDocumentMouseDown);
     window.removeEventListener('touchstart', this.onDocumentTouchStart);
     this.mount.removeChild(this.renderer.domElement);
+    window.removeEventListener('resize', this.resize);
+    // window.removeEventListener('scroll', this.start);
   }
   start() {
     if (!this.frameId) this.frameId = requestAnimationFrame(this.animate);
@@ -71,10 +78,31 @@ export default class Animation extends React.Component {
   stop() {
     cancelAnimationFrame(this.frameId);
   }
-  speaker() {
+  resize() {
+    this.width = window.innerWidth;
+    this.height = this.width * 9/16;
+    this.camera.aspect = this.width / this.height;
+    this.camera.updateProjectionMatrix();
+    this.renderer.setSize(this.width, this.height);
+  }
+  async speaker() {
+    const mats = [];
     const jsonLoader = new THREE.JSONLoader();
+    this.geo = new THREE.Geometry();
     jsonLoader.load("models/speaker.json", (geometry, materials) => {
-      this.speak = new THREE.Mesh(geometry, new THREE.MultiMaterial(materials));
+      mats.push(...materials);
+      this.geo.merge(geometry, geometry.matrix);
+    });
+    jsonLoader.load("models/speakertop.json", (geometry, materials) => {
+      this.geo.merge(geometry, geometry.matrix, mats.length);
+      mats.push(...materials);
+    });
+    jsonLoader.load("models/speakerbottom.json", (geometry, materials) => {
+      this.geo.merge(geometry, geometry.matrix, mats.length);
+      mats.push(...materials);
+      this.speak = new THREE.Mesh(this.geo, new THREE.MultiMaterial(mats));
+      // setInterval(() => this.speaktop.position.z += 0.002, 10);
+      // setTimeout(() => setInterval(() => this.speaktop.position.z -= 0.002, 10), 5);
       this.speak.rotateY(-0.65);
       this.speak.scale.set(20, 20, 20);
       this.speak.position.setZ(-200);
@@ -83,41 +111,23 @@ export default class Animation extends React.Component {
       this.speak.castShadow = true;
       this.scene.add(this.speak);
     });
-    jsonLoader.load("models/speakerbottom.json", (geometry, materials) => {
-      this.speakbottom = new THREE.Mesh(geometry, new THREE.MultiMaterial(materials));
-      this.speakbottom.rotateY(-0.65);
-      this.speakbottom.scale.set(20, 20, 20);
-      this.speakbottom.position.setZ(-200);
-      this.speakbottom.position.setY(-100);
-      this.speakbottom.position.setX(-100);
-      this.speakbottom.castShadow = true;
-      // setInterval(() => this.speakbottom.position.z += 0.005, 10);
-      // setTimeout(() => setInterval(() => this.speakbottom.position.z -= 0.005, 10), 5);
-      this.scene.add(this.speakbottom);
-    });
-    jsonLoader.load("models/speakertop.json", (geometry, materials) => {
-      this.speaktop = new THREE.Mesh(geometry, new THREE.MultiMaterial(materials));
-      this.speaktop.rotateY(-0.65);
-      this.speaktop.scale.set(20, 20, 20);
-      this.speaktop.position.setZ(-200);
-      this.speaktop.position.setY(-100);
-      this.speaktop.position.setX(-100);
-      this.speaktop.castShadow = true;
-      // setInterval(() => this.speaktop.position.z += 0.002, 10);
-      // setTimeout(() => setInterval(() => this.speaktop.position.z -= 0.002, 10), 5);
-      this.scene.add(this.speaktop);
-    });
   }
-  animate() {
+  animate(timestamp) {
     this.renderScene();
     this.delta += 0.1;
     this.shapeOne.rotateY(0.01);
     this.shapeOne.rotateX(0.003);
     if (this.play && this.partyMesh.visible) this.partyMesh.visible = false;
     if (!this.play && this.partyMesh && !this.partyMesh.visible) this.partyMesh.visible = true;
-    if (this.play) this.changeLightColor();
+    if (this.play && timestamp % 10 < 5) this.changeLightColor();
     if (this.partyMesh) this.cycleOpacity();
-    this.frameId = window.requestAnimationFrame(this.animate);
+    if (this.music && this.play) this.audio.play();
+    if (!this.music && !this.play) this.audio.pause();
+    if (window.scrollY >= this.mount.offsetTop - window.innerHeight && window.scrollY < this.mount.offsetTop + this.mount.offsetHeight) {
+      setTimeout(() => this.frameId = window.requestAnimationFrame(this.animate), 1000 / 30 );
+    } else {
+      setTimeout(() => this.frameId = window.requestAnimationFrame(this.animate), 1000 );
+    }
   }
   renderScene() {
     this.renderer.render(this.scene, this.camera);
@@ -216,7 +226,7 @@ export default class Animation extends React.Component {
     }
   render() {
     return (
-      <div onClick={() => this.play = !this.play} style={{ position: 'relative',  zIndex: 99, width: window.innerWidth, height: window.innerHeight, cursor: 'pointer' }}
+      <div onClick={() => { this.play = !this.play; this.music = !this.music; }} style={{ position: 'relative',  zIndex: 99, width: window.innerWidth, height: window.innerWidth * 9/16, cursor: 'pointer' }}
       ref={(mount) => this.mount = mount }
       ></div>
     )

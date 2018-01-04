@@ -11,12 +11,25 @@
 .contact-text-input {
   width: 50vw;
   height: 4vw;
-  font-size: 3vw;
+  font-size: 2.8vw;
 }
 
+.submit-btn {
+  width: 20vw;
+  height: 4vw;
+  margin: auto;
+  font-size: 2.8vw;
+  border-radius: 5px;
+}
+
+.submit-btn:hover {
+  cursor: pointer;
+  opacity: .6;
+}
 
 .contact-textarea {
   width: 50vw;
+  font-size: 2.8vw;
 }
 
 form {
