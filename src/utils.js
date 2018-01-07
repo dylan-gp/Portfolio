@@ -1,14 +1,7 @@
-import { JSONLoader } from 'three';
+const sgMail = require('@sendgrid/mail');
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-const jsonLoader = new JSONLoader();
-
-export function loadModel( path ) {
-    return new Promise( ( resolve, reject ) => {
-        jsonLoader.load(
-            path,
-            resolve,
-            (eth) => console.log(eth.total),
-            error => reject
-        );
-    });
+export function sendEmail(msg) {
+  sgMail.send(msg);
+  return;
 }

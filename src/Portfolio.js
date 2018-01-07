@@ -16,12 +16,17 @@ export default class Portfolio extends React.Component {
     this.state = {
       codersCode: false,
       hideLeft: true,
-      hideRight: false
+      hideRight: false,
+      currentText: ''
     }
     this.scroll = this.scroll.bind(this);
     this.popUp = this.popUp.bind(this);
     this.popDown = this.popDown.bind(this);
     this.arrowVisibility = this.arrowVisibility.bind(this);
+    this.codersCodeText = "The Coders Code";
+    this.notAvail = "N/A Yet"
+    this.fillText = this.fillText.bind(this);
+    this.stopText = this.stopText.bind(this);
   };
 
   componentDidMount() {
@@ -37,16 +42,40 @@ export default class Portfolio extends React.Component {
   }
 
   arrowVisibility() {
-    const width = window.innerWidth * .32;
+    const width = window.innerWidth * .40;
     if (this.list.scrollLeft === 0 && !this.state.hideLeft) this.setState({ hideLeft: true });
     if (this.list.scrollLeft > 0 && this.state.hideLeft) this.setState({ hideLeft: false });
     if (this.list.scrollLeft >= Math.floor(width * 2) && !this.state.hideRight) this.setState({ hideRight: true });
     if (this.list.scrollLeft < Math.floor(width * 2) && this.state.hideRight) this.setState({ hideRight: false });
   }
   scroll(boo) {
-    const width = Math.round(window.innerWidth * .32);
+    const width = Math.round(window.innerWidth * .40);
     boo ? this.list.scrollLeft += width : this.list.scrollLeft -= width;
     // this.interval = setInterval(() => boo ? this.list.scrollLeft += window.innerWidth * .32 : this.list.scrollLeft -= window.innerWidth * .32, 1);
+  }
+
+  fillText(text) {
+    clearInterval(this.int);
+    if (!this.i) this.i = 0;
+    if (this.state.currentText.length === 0) clearInterval(this.int)
+    this.int = setInterval(() => {
+      this.setState({currentText: this.state.currentText + text[this.i]});
+      this.i++;
+      if (this.state.currentText.length === text.length) clearInterval(this.int);
+    }, 20);
+  }
+  stopText() {
+    clearInterval(this.int);
+    this.int = setInterval(() => {
+      if (this.state.currentText === '' || this.state.currentText === undefined) {
+        clearInterval(this.int);
+        this.setState({currentText: ''});
+      }
+      else {
+        this.setState({currentText: this.state.currentText.slice(0, -1)});
+        this.i--;
+      }
+    }, 20);
   }
 
   unscroll() {
@@ -62,10 +91,12 @@ export default class Portfolio extends React.Component {
             onClick={() => this.scroll(false)} src={arrow} 
             alt="go left"
           />
-          <li>
+          <li id="coders-code-img">
             <img 
               className="portfolio-img"
               onClick={() => this.popUp('coders')} src={CodersCodeImg}
+              onMouseOver={() => this.fillText(this.codersCodeText)}
+              onMouseLeave={() => this.stopText()}
               alt="Coders Code"
             />
           </li>
@@ -80,10 +111,16 @@ export default class Portfolio extends React.Component {
               pageLink="http://www.thecoderscode.com/"
             /> : ''}
           <li>
-            <img className="portfolio-img" src={Todo} alt="to do list" />
+            <img className="portfolio-img" src={Todo} alt="to do list"
+            onMouseOver={() => this.fillText(this.notAvail)}
+            onMouseLeave={() => this.stopText()}
+            />
           </li>
           <li>
-            <img className="portfolio-img" src={Friends} alt="friends list" />
+            <img className="portfolio-img" src={Friends} alt="friends list"
+            onMouseOver={() => this.fillText(this.notAvail)}
+            onMouseLeave={() => this.stopText()}
+            />
           </li>
           <img
             className={this.state.hideRight ? "scroll-arrow-right-hide" : "scroll-arrow-right"}
@@ -91,6 +128,7 @@ export default class Portfolio extends React.Component {
             alt="go right"
             />
         </ul>
+        <h2 className="piece-name" ref={(h2) => this.ccText = h2 } >{this.state.currentText}</h2>
       </div>
     )
   }

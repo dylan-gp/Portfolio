@@ -1,8 +1,6 @@
 import React from 'react';
+import * as utils from './utils';
 import './Contact.css';
-
-const sgMail = require('@sendgrid/mail');
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 export default class Contact extends React.Component {
   constructor() {
@@ -19,7 +17,10 @@ export default class Contact extends React.Component {
       text: `${e.target.elements['message'].value} \n\n message from ${e.target.elements['name'].value}`,
       html: `<strong>${e.target.elements['message'].value} \n\n message from ${e.target.elements['name'].value}</strong>`,
     };
-    sgMail.send(msg);
+    utils.sendEmail(msg);
+    e.target.elements['email'].value = e.target.elements['subject'].value = 
+    e.target.elements['message'].value = e.target.elements['name'].value = '';
+    
   }
 
   render() {
