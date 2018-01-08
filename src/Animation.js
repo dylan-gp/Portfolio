@@ -21,7 +21,7 @@ export default class Animation extends React.Component {
   }
   componentDidMount() {
     this.delta = 0;
-    this.audio = new Audio('bensound-dubstep.mp3');
+    this.audio = Math.random() <= .5 ? new Audio('flying home.mp3') : new Audio('TakeOver.mp3');
     this.scene = new THREE.Scene();
     this.width = window.innerWidth;
     this.height = this.width * 9/16;
@@ -119,10 +119,16 @@ export default class Animation extends React.Component {
     this.shapeOne.rotateX(0.003);
     if (this.play && this.partyMesh.visible) this.partyMesh.visible = false;
     if (!this.play && this.partyMesh && !this.partyMesh.visible) this.partyMesh.visible = true;
-    if (this.play && timestamp % 10 < 5) this.changeLightColor();
+    if (this.play && timestamp % 10 < 6) this.changeLightColor();
     if (this.partyMesh) this.cycleOpacity();
-    if (this.music && this.play) this.audio.play();
-    if (!this.music && !this.play) this.audio.pause();
+    if (this.music && this.play) {
+      this.renderer.setClearColor(0x000000, 1);
+      this.audio.play();
+    }
+    if (!this.music && !this.play) {
+      this.renderer.setClearColor(0xffffff, 0);
+      this.audio.pause();
+    }
     if (window.scrollY >= this.mount.offsetTop - window.innerHeight && window.scrollY < this.mount.offsetTop + this.mount.offsetHeight) {
       setTimeout(() => this.frameId = window.requestAnimationFrame(this.animate), 1000 / 30 );
     } else {

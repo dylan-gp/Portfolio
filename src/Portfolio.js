@@ -3,8 +3,8 @@ import Piece from './Piece';
 import CodersCodeImg from './CodersCode.png';
 import CodersCodeClientImg from './CodersCodeClient.png';
 import CodersCodeAPIImg from './CodersCodeAPI.png';
-import Todo from './Todo.png';
-import Friends from './Friends.png';
+import ZoomToYoutube from './ZoomToYoutube.png';
+import ZoomToYoutube2 from './ZoomToYoutube2.png';
 import arrow from './arrow.svg';
 
 import './Portfolio.css';
@@ -111,13 +111,13 @@ export default class Portfolio extends React.Component {
               pageLink="http://www.thecoderscode.com/"
             /> : ''}
           <li>
-            <img className="portfolio-img" src={Todo} alt="to do list"
+            <img className="portfolio-img" src={ZoomToYoutube} alt="Zoom To Youtube"
             onMouseOver={() => this.fillText(this.notAvail)}
             onMouseLeave={() => this.stopText()}
             />
           </li>
           <li>
-            <img className="portfolio-img" src={Friends} alt="friends list"
+            <img className="portfolio-img" src={ZoomToYoutube2} alt="Zoom To Youtube2"
             onMouseOver={() => this.fillText(this.notAvail)}
             onMouseLeave={() => this.stopText()}
             />
