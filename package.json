@@ -5,6 +5,8 @@
   "dependencies": {
     "@sendgrid/mail": "^6.1.4",
     "axios": "^0.17.1",
+    "dns": "^0.2.2",
+    "nodemailer": "^4.4.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-particles-js": "^2.1.0",

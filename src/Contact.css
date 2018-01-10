@@ -40,3 +40,37 @@ form {
   justify-content: center;
   width: 100%;
 }
+
+.show-modal {
+  visibility:visible;
+    opacity:1;
+  background-color: white;
+  border: black 1px outset;
+  border-radius: 4px;
+  padding: 0 2vw;
+  z-index: 100000;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: visibility 0.3s linear,opacity 0.3s linear;
+}
+
+.modal-text {
+  font-size: 1.8vw;
+}
+
+.hide-modal {
+  background-color: white;
+  border: black 1px outset;
+  border-radius: 4px;
+  padding: 0 2vw;
+  z-index: 100000;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  visibility:hidden;
+  opacity:0;
+  transition: visibility 0.3s linear,opacity 0.3s linear;
+}

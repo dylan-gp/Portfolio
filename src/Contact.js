@@ -5,7 +5,11 @@ import './Contact.css';
 export default class Contact extends React.Component {
   constructor() {
     super();
+    this.state = {
+      modal: false
+    }
     this.onSubmit = this.onSubmit.bind(this);
+    this.popUp = this.popUp.bind(this);
   }
 
   onSubmit(e) {
@@ -20,7 +24,12 @@ export default class Contact extends React.Component {
     utils.sendEmail(msg);
     e.target.elements['email'].value = e.target.elements['subject'].value = 
     e.target.elements['message'].value = e.target.elements['name'].value = '';
-    
+    this.popUp();
+  }
+
+  popUp() {
+    this.setState({ modal: true });
+    setTimeout(() => this.setState({ modal: false }), 2000);
   }
 
   render() {
@@ -48,6 +57,7 @@ export default class Contact extends React.Component {
           </ul>
           <button type="submit" className="submit-btn" >Submit</button>
         </form>
+        <div className={this.state.modal ? "show-modal" : "hide-modal"}><p className="modal-text">Message has been sent</p></div>
       </div>
     )
   }
