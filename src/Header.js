@@ -23,9 +23,9 @@ export default class Header extends React.Component {
   }
   componentDidMount() {
     window.addEventListener('scroll', this.hideTitle);
-    setTimeout(() => this.setState({ hide: false }), 2000);
+    setTimeout(() => this.setState({ hide: false }), 3000);
     this.writeHello();
-    setTimeout(() => this.interval = setInterval(() => this.arrowFlash(), 1200), 3500);
+    setTimeout(() => this.interval = setInterval(() => this.arrowFlash(), 1200), 4500);
   }
   componentWillUnmount() {
     window.removeEventListener('scroll', this.hideTitle);
@@ -51,7 +51,7 @@ export default class Header extends React.Component {
         this.helloWorld = this.helloWorld.slice(1);
         if (this.helloWorld.length === 0) clearInterval(int);
       }, 100);
-    }, 2500);
+    }, 3500);
   }
   
   render() {
