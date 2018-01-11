@@ -18,6 +18,7 @@ class App extends Component {
     }
     this.findAbout = this.findAbout.bind(this);
     this.findPortfolio = this.findPortfolio.bind(this);
+    this.findContact = this.findContact.bind(this);
     this.addComponent = this.addComponent.bind(this);
   }
   componentDidMount() {
