@@ -14,7 +14,7 @@ export default class About extends React.Component {
         <div className="about-row">
           <div className="about-row-item">
             <h2 className="about-item-title">I'm Dylan Scheidt, an aspiring software engineer</h2>
-            <h3 className="about-item-subtitle-left">I've always had a love for all things tech.  My passion lies in building things and finding optomized solutions.</h3>
+            <h3 className="about-item-subtitle-left">I've always had a love for all things tech.  My passion lies in building things and finding optimized solutions.</h3>
           </div>
           <div className="about-row-item" >
             <h3 className="about-item-title">What I Do</h3>
