@@ -119,15 +119,18 @@ export default class Animation extends React.Component {
     this.shapeOne.rotateX(0.003);
     if (this.play && this.partyMesh.visible) this.partyMesh.visible = false;
     if (!this.play && this.partyMesh && !this.partyMesh.visible) this.partyMesh.visible = true;
-    if (this.play && timestamp % 10 < 6) this.changeLightColor();
+    // if (this.play && timestamp % 10 < 3 && Math.random() < 0.5) this.changeLightColor();
     if (this.partyMesh) this.cycleOpacity();
     if (this.music && this.play) {
       this.renderer.setClearColor(0x000000, 1);
       this.audio.play();
+      if (!this.lightInt) this.lightInt = setInterval(() => this.changeLightColor(), 460);
     }
     if (!this.music && !this.play) {
       this.renderer.setClearColor(0xffffff, 0);
       this.audio.pause();
+      clearInterval(this.lightInt);
+      this.lightInt = null;
     }
     if (window.scrollY >= this.mount.offsetTop - window.innerHeight && window.scrollY < this.mount.offsetTop + this.mount.offsetHeight) {
       setTimeout(() => this.frameId = window.requestAnimationFrame(this.animate), 1000 / 30 );
@@ -179,7 +182,7 @@ export default class Animation extends React.Component {
   partyText() {
     const loader = new THREE.FontLoader();
      loader.load('fonts/gentilis_regular.typeface.json', (font) => {
-      const geometry = new THREE.TextGeometry("Click To Party",
+      const geometry = new THREE.TextGeometry("Click To Party\n(light flashes)",
         {font: font, size: 3, height: 0.5, bevelEnabled: true, curveSegments: 3, bevelThickness: 0.1, bevelSize: 0.2, bevelSegments: 3 });
       const texture = new THREE.TextureLoader().load('textures/perlin-512.png');
       texture.wrapS = THREE.RepeatWrapping;
