@@ -20,7 +20,7 @@ export default class TitleBar extends React.Component {
 
   titleBarFix() {
     this.marker.getBoundingClientRect().top < -10 ?
-      this.marker.getBoundingClientRect().top < -40 ? 
+      this.marker.getBoundingClientRect().top < -80 ? 
       this.titlebar.className = "titlebar-container-fix-fade" :
       this.titlebar.className = "titlebar-container-fix" :
       this.titlebar.className = "titlebar-container-fix-hide";
