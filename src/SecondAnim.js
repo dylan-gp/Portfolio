@@ -23,7 +23,7 @@ export default class SecondAnim extends React.Component {
     		
     this.renderer = new THREE.WebGLRenderer();
     this.renderer.setPixelRatio(window.devicePixelRatio);
-    this.renderer.setClearColor('#000000');
+    this.renderer.setClearColor(0x000000, 1);
     
     this.renderer.setSize(this.width, this.height);
     this.planet();

@@ -1,17 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Titillium+Web|Pangolin|Roboto');
+
+
 .App {
   text-align: center;
   background-image: url('./5.jpg');
   background-repeat: repeat-x;
-  background-size: 50% auto;
-  font-family: 'Titillium Web', sans-serif;
+  background-size: 78vh auto;
+  font-family: 'Titillium Web', 'sans-serif';
 }
 
-.main-content {
-  background: none;
-  padding-top: 40px;
-  padding-bottom: 200px;
-  background-size: 100%;
-}
+
 
 
 

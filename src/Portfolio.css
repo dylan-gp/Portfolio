@@ -1,6 +1,6 @@
 .portfolio-img {
-  height: 20vw;
-  width: 32vw;
+  height: 24vw;
+  width: 40vw;
   margin: auto 4vw;
 }
 
@@ -31,7 +31,7 @@
   align-items: center;
   list-style: none;
   overflow-x: scroll;
-  width: 40vw;
+  width: 48vw;
 }
 
 .portfolio-list::-webkit-scrollbar {
@@ -41,7 +41,7 @@
 
 .scroll-arrow-right {
   position: absolute;
-  right: 10%;
+  right: 4%;
   height: 8vw;
   -webkit-transition: 0.4s;
   -moz-transition: 0.4s;
@@ -51,7 +51,7 @@
 }
 .scroll-arrow-right-hide {
   position: absolute;
-  right: 10%;
+  right: 4%;
   height: 8vw;
   display: none;
 }
@@ -65,7 +65,7 @@
 }
 .scroll-arrow-left{
   position: absolute;
-  left: 10%;
+  left: 4%;
   height: 8vw;
   transform: rotate(180deg);
   -webkit-transition: 0.4s;
@@ -76,7 +76,7 @@
 }
 .scroll-arrow-left-hide {
   position: absolute;
-  left: 10%;
+  left: 4%;
   height: 8vw;
   display: none;
 }

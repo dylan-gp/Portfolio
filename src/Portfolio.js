@@ -42,14 +42,14 @@ export default class Portfolio extends React.Component {
   }
 
   arrowVisibility() {
-    const width = window.innerWidth * .40;
+    const width = window.innerWidth * .48;
     if (this.list.scrollLeft === 0 && !this.state.hideLeft) this.setState({ hideLeft: true });
     if (this.list.scrollLeft > 0 && this.state.hideLeft) this.setState({ hideLeft: false });
     if (this.list.scrollLeft >= Math.floor(width * 2) && !this.state.hideRight) this.setState({ hideRight: true });
     if (this.list.scrollLeft < Math.floor(width * 2) && this.state.hideRight) this.setState({ hideRight: false });
   }
   scroll(boo) {
-    const width = Math.round(window.innerWidth * .40);
+    const width = Math.round(window.innerWidth * .48);
     boo ? this.list.scrollLeft += width : this.list.scrollLeft -= width;
     // this.interval = setInterval(() => boo ? this.list.scrollLeft += window.innerWidth * .32 : this.list.scrollLeft -= window.innerWidth * .32, 1);
   }

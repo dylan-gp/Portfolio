@@ -7,6 +7,7 @@ export default class Animation extends React.Component {
     this.play = false;
     this.music = false;
     this.start = this.start.bind(this);
+    this.onPlay = this.onPlay.bind(this);
     this.stop = this.stop.bind(this);
     this.animate = this.animate.bind(this);
     this.text = this.text.bind(this);
@@ -22,6 +23,7 @@ export default class Animation extends React.Component {
   componentDidMount() {
     this.delta = 0;
     this.audio = Math.random() <= .5 ? new Audio('flying home.mp3') : new Audio('TakeOver.mp3');
+    this.audio.volume = 0.5;
     this.scene = new THREE.Scene();
     this.width = window.innerWidth;
     this.height = this.width * 9/16;
@@ -123,12 +125,10 @@ export default class Animation extends React.Component {
     if (this.partyMesh) this.cycleOpacity();
     if (this.music && this.play) {
       this.renderer.setClearColor(0x000000, 1);
-      this.audio.play();
       if (!this.lightInt) this.lightInt = setInterval(() => this.changeLightColor(), 460);
     }
     if (!this.music && !this.play) {
       this.renderer.setClearColor(0xffffff, 0);
-      this.audio.pause();
       clearInterval(this.lightInt);
       this.lightInt = null;
     }
@@ -140,6 +140,10 @@ export default class Animation extends React.Component {
   }
   renderScene() {
     this.renderer.render(this.scene, this.camera);
+  }
+  onPlay() {
+    if (this.play) this.audio.play();
+    else this.audio.pause();
   }
   cycleOpacity() {
     if (this.partyMesh.position.y >= -20) this.positionUp = false;
@@ -235,7 +239,7 @@ export default class Animation extends React.Component {
     }
   render() {
     return (
-      <div onClick={() => { this.play = !this.play; this.music = !this.music; }} style={{ position: 'relative',  zIndex: 99, width: window.innerWidth, height: window.innerWidth * 9/16, cursor: 'pointer' }}
+      <div onClick={() => { this.play = !this.play; this.music = !this.music; this.onPlay(); }} style={{ position: 'relative',  zIndex: 99, width: window.innerWidth, height: window.innerWidth * 9/16, cursor: 'pointer' }}
       ref={(mount) => this.mount = mount }
       ></div>
     )

@@ -8,6 +8,7 @@ import SecondAnim from './SecondAnim';
 import Portfolio from './Portfolio';
 import Contact from './Contact';
 import Particles from 'react-particles-js';
+import './App.css';
 
 
 class App extends Component {

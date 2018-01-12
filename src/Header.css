@@ -1,5 +1,6 @@
 .header {
-  height: 65vw;
+  /* height: 65vw; */
+  height: 100vh;
   overflow: hidden;
   background-color: rgba(67, 32, 160, .8);
   position: relative;
@@ -8,25 +9,33 @@
 
 .header-titles {
   margin: auto;
-  height: 54.2vw;
+  /* height: 54.2vw; */
+  height: 80vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
 .header-hello {
-  font-size: 3vw;
+  /* font-size: 4vw; */
+  font-size: 7vmin;
+  font-weight: 100;
   color: black;
   display: flex;
   align-self: center;
-   -webkit-text-fill-color: rgba(255, 255, 255, 0); /* Will override color (regardless of order) */
-   -webkit-text-stroke-width: 1px;
+   -webkit-text-fill-color: rgba(67, 32, 160, .8); /* Will override color (regardless of order) */
+   -webkit-text-stroke-width: .3vmin;
    -webkit-text-stroke-color: black;
+   text-shadow:
+		-.2vmin -.2vmin 0 #000,
+		.2vmin -.2vmin 0 #000,
+		-.2vmin .2vmin 0 #000,
+		.2vmin .2vmin 0 #000;
 }
 .arrow {
-  height: 8vw;
+  height: 10vmin;
   position: absolute;
-  top: 65%;
+  top: 70%;
   left: 50%;
   -webkit-transition: 0.4s;
   -moz-transition: 0.4s;
@@ -37,9 +46,9 @@
 }
 
 .arrow-none {
-  height: 8vw;
+  height: 10vmin;
   position: absolute;
-  top: 65%;
+  top: 70%;
   left: 50%;
   -webkit-transition: 0.4s;
   -moz-transition: 0.4s;
@@ -53,7 +62,7 @@
   padding: 0;
   margin: .6vw auto;
   text-align: center;
-  font-size: 7vmin;
+  font-size: 8vmin;
   -webkit-transition: 0.8s;
   -moz-transition: 0.8s;
   -o-transition: 0.8s;
@@ -62,7 +71,7 @@
   display: flex;
   align-self: center;
   visibility: visible; 
-  text-shadow: 2px 2px rgba(255, 255, 255, .6);
+  /* text-shadow: 2px 2px rgba(255, 255, 255, .6); */
 }
 
 .header-title-none {
@@ -72,13 +81,13 @@
   -moz-transition: 0.8s;
   -o-transition: 0.8s;
   transition: 0.8s;
-  font-size: 7vmin;
+  font-size: 8vmin;
   opacity: 0;
   visibility: hidden; 
 }
 
 .header-links {
-  height: 11vw;
+  height: 20vmin;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -88,7 +97,7 @@
   z-index:9999;
 }
 .header-icon {
-  height: 5vw;
+  height: 9vmin;
   margin: auto .6vw;
   
 }
