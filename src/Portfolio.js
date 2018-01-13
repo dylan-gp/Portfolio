@@ -49,9 +49,8 @@ export default class Portfolio extends React.Component {
 
   resize() {
     const prev = this.state.size;
-    const width = Math.round(window.innerWidth * this.state.size);
     this.setState({size: window.matchMedia("screen and (max-width: 500px)").matches ? .80 : .48});
-    if (prev !== this.state.size) this.list.scrollLeft = this.list.scrollLeft - this.list.scrollLeft % width;
+    if (prev !== this.state.size) this.list.scrollLeft = 0;
 
   }
   arrowVisibility() {
