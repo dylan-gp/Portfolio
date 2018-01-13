@@ -69,3 +69,35 @@
   font-size: 1.4vw;
   margin: 0;
 }
+
+@media screen and (max-width: 500px) {
+  .about-title {
+    font-size: 10vw;
+  }
+  .about-pic {
+    height: 50vw;
+    border-radius: 50vw;
+  }
+  .about-container {
+    width: 100vw;
+    padding: 1em 0;
+  }
+  .about-item-title {
+    font-size: 4vw;
+  }
+  .about-row-item {
+    max-width: 40vw;
+  }
+  .about-item-subtitle {
+    font-size: 3vw;
+    margin: 1.4vw 0 0 0;
+  }
+  .about-item-subtitle-left {
+    font-size: 3.4vw;
+    margin: 8vw 0 0 0;
+  }
+  .about-item-text {
+    font-size: 3vw;
+  }
+
+}

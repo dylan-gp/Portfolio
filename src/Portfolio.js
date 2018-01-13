@@ -17,12 +17,14 @@ export default class Portfolio extends React.Component {
       codersCode: false,
       hideLeft: true,
       hideRight: false,
-      currentText: ''
+      currentText: '',
+      size: window.matchMedia("screen and (max-width: 500px)").matches ? .80 : .48
     }
     this.scroll = this.scroll.bind(this);
     this.popUp = this.popUp.bind(this);
     this.popDown = this.popDown.bind(this);
     this.arrowVisibility = this.arrowVisibility.bind(this);
+    this.resize = this.resize.bind(this);
     this.codersCodeText = "The Coders Code";
     this.notAvail = "N/A Yet"
     this.fillText = this.fillText.bind(this);
@@ -31,6 +33,10 @@ export default class Portfolio extends React.Component {
 
   componentDidMount() {
     this.list.addEventListener('scroll', this.arrowVisibility);
+    window.addEventListener('resize', this.resize);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.resize);
   }
 
   popUp(piece) {
@@ -41,15 +47,22 @@ export default class Portfolio extends React.Component {
     if (piece === 'coders') this.setState({ codersCode: false });
   }
 
+  resize() {
+    const prev = this.state.size;
+    const width = Math.round(window.innerWidth * this.state.size);
+    this.setState({size: window.matchMedia("screen and (max-width: 500px)").matches ? .80 : .48});
+    if (prev !== this.state.size) this.list.scrollLeft = this.list.scrollLeft - this.list.scrollLeft % width;
+
+  }
   arrowVisibility() {
-    const width = window.innerWidth * .48;
+    const width = window.innerWidth * this.state.size;
     if (this.list.scrollLeft === 0 && !this.state.hideLeft) this.setState({ hideLeft: true });
     if (this.list.scrollLeft > 0 && this.state.hideLeft) this.setState({ hideLeft: false });
     if (this.list.scrollLeft >= Math.floor(width * 2) && !this.state.hideRight) this.setState({ hideRight: true });
     if (this.list.scrollLeft < Math.floor(width * 2) && this.state.hideRight) this.setState({ hideRight: false });
   }
   scroll(boo) {
-    const width = Math.round(window.innerWidth * .48);
+    const width = Math.round(window.innerWidth * this.state.size);
     boo ? this.list.scrollLeft += width : this.list.scrollLeft -= width;
     // this.interval = setInterval(() => boo ? this.list.scrollLeft += window.innerWidth * .32 : this.list.scrollLeft -= window.innerWidth * .32, 1);
   }
@@ -128,7 +141,9 @@ export default class Portfolio extends React.Component {
             alt="go right"
             />
         </ul>
+        <div className="piece-name-div">
         <h2 className="piece-name" ref={(h2) => this.ccText = h2 } >{this.state.currentText}</h2>
+        </div>
       </div>
     )
   }

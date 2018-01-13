@@ -125,3 +125,12 @@
   border-bottom: 2px solid white;
   opacity: .4;
 }
+
+@media screen and (max-width: 500px) {
+  .titlebar-item {
+    font-size: 4vw;
+  }
+  .titlebar-item-fix {
+    font-size: 4vw;
+  }
+}

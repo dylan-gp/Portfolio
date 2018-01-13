@@ -11,7 +11,6 @@ export default class Contact extends React.Component {
     this.onSubmit = this.onSubmit.bind(this);
     this.popUp = this.popUp.bind(this);
   }
-
   onSubmit(e) {
     e.preventDefault();
     const msg = {

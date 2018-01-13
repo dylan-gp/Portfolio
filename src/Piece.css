@@ -106,3 +106,27 @@
 .goto-icon:hover {
     opacity: 1;
 }
+
+@media screen and (max-width: 500px) {
+  .piece-container {
+    width: 100vw;
+  }
+  .piece-img {
+    width: 100vw;
+  }
+  .small-piece-img {
+    width: 20vw;
+  }
+  .piece {
+    margin: auto 0;
+  }
+  .goto-icon {
+    width: 8vw;
+  }
+  .piece-gh-icon-dark {
+    width: 8vw;
+  }
+  .piece-gh-icon-light {
+    width: 8vw;
+  }
+}

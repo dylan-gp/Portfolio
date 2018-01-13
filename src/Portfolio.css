@@ -16,14 +16,13 @@
   margin: auto;
   position: relative;
   z-index: 100;
-  min-height: 100vh;
   vertical-align: middle;
   padding-top: 4em;
+  min-height: 100vh;
 }
 
 .portfolio-list {
   padding: 0;
-  padding-top: 4em;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -31,6 +30,7 @@
   align-items: center;
   list-style: none;
   overflow-x: scroll;
+  padding-bottom: 2vw;
   width: 48vw;
 }
 
@@ -91,4 +91,31 @@
 
 .piece-name {
   text-align: center;
+  font-size: 2vw;
+}
+
+.piece-name-div {
+  height: 6vw;
+  padding-bottom: 4vw;
+}
+
+
+@media screen and (max-width: 500px) {
+  .port-container {
+    width: 100vw;
+    padding: 1em 0;
+    min-height: 0;
+  }
+  .piece-name {
+    font-size: 4vw;
+  }
+  .portfolio-list {
+    padding-top: 0;
+    width: 80vw;
+    padding-bottom: 10vw;
+  }
+  .portfolio-img {
+    width: 72vw;
+    height: 48vw;
+  }
 }

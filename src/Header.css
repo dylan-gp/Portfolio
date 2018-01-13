@@ -35,7 +35,7 @@
 .arrow {
   height: 10vmin;
   position: absolute;
-  top: 70%;
+  top: 66%;
   left: 50%;
   -webkit-transition: 0.4s;
   -moz-transition: 0.4s;
@@ -48,7 +48,7 @@
 .arrow-none {
   height: 10vmin;
   position: absolute;
-  top: 70%;
+  top: 66%;
   left: 50%;
   -webkit-transition: 0.4s;
   -moz-transition: 0.4s;
