@@ -135,7 +135,7 @@ export default class Animation extends React.Component {
     if (window.scrollY >= this.mount.offsetTop - window.innerHeight && window.scrollY < this.mount.offsetTop + this.mount.offsetHeight) {
       setTimeout(() => this.frameId = window.requestAnimationFrame(this.animate), 1000 / 30 );
     } else {
-      setTimeout(() => this.frameId = window.requestAnimationFrame(this.animate), 1000 );
+      setTimeout(() => this.frameId = window.requestAnimationFrame(this.animate), 2000 );
     }
   }
   renderScene() {

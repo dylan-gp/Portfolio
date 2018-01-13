@@ -23,9 +23,28 @@ export default class Header extends React.Component {
   }
   componentDidMount() {
     window.addEventListener('scroll', this.hideTitle);
-    setTimeout(() => this.setState({ hide: false }), 3000);
-    this.writeHello();
-    setTimeout(() => this.interval = setInterval(() => this.arrowFlash(), 1200), 4500);
+    const element = document.getElementById('loader');
+    const bounce1 = document.getElementById('bounce1');
+    const bounce2 = document.getElementById('bounce2');
+    const bounce3 = document.getElementById('bounce3');
+    if(element){
+      setTimeout(() => {
+        setTimeout(() => element.classList.add('available'), 500);
+        bounce1.classList.add('final-bounce');
+        bounce2.classList.add('final-bounce');
+        bounce3.classList.add('final-bounce');
+        document.body.classList.remove('no-scroll');
+        setTimeout(() => this.setState({ hide: false }), 2000);
+        this.writeHello();
+        setTimeout(() => this.interval = setInterval(() => this.arrowFlash(), 1200), 3500);
+        setTimeout(() => {
+          element.parentNode.removeChild(element);     
+        }, 2000)
+      }, 5000);
+    }
+    
+    
+    
   }
   componentWillUnmount() {
     window.removeEventListener('scroll', this.hideTitle);
@@ -51,7 +70,7 @@ export default class Header extends React.Component {
         this.helloWorld = this.helloWorld.slice(1);
         if (this.helloWorld.length === 0) clearInterval(int);
       }, 100);
-    }, 3500);
+    }, 2500);
   }
   
   render() {

@@ -40,11 +40,17 @@ export default class Portfolio extends React.Component {
   }
 
   popUp(piece) {
-    if (piece === 'coders') this.setState({ codersCode: true });
+    if (piece === 'coders') {
+      this.setState({ codersCode: true });
+      // document.body.classList.add('no-scroll');
+    }
   }
 
   popDown(piece) {
-    if (piece === 'coders') this.setState({ codersCode: false });
+    if (piece === 'coders') {
+      this.setState({ codersCode: false });
+      // document.body.classList.remove('no-scroll');
+    }
   }
 
   resize() {
@@ -66,7 +72,7 @@ export default class Portfolio extends React.Component {
     // this.interval = setInterval(() => boo ? this.list.scrollLeft += window.innerWidth * .32 : this.list.scrollLeft -= window.innerWidth * .32, 1);
   }
 
-  fillText(text) {
+  fillText(text = '') {
     clearInterval(this.int);
     if (!this.i) this.i = 0;
     if (this.state.currentText.length === 0) clearInterval(this.int)
@@ -79,7 +85,7 @@ export default class Portfolio extends React.Component {
   stopText() {
     clearInterval(this.int);
     this.int = setInterval(() => {
-      if (this.state.currentText === '' || this.state.currentText === undefined) {
+      if (this.state.currentText === '' || this.state.currentText === undefined || this.state.currentText === 'undefined') {
         clearInterval(this.int);
         this.setState({currentText: ''});
       }

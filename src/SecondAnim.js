@@ -94,7 +94,7 @@ export default class SecondAnim extends React.Component {
     if (window.scrollY >= this.mount.offsetTop - window.innerHeight && window.scrollY < this.mount.offsetTop + this.mount.offsetHeight) {
       this.frameId = window.requestAnimationFrame(this.animate);
     } else {
-      setTimeout(() => this.frameId = window.requestAnimationFrame(this.animate), 1000 );
+      setTimeout(() => this.frameId = window.requestAnimationFrame(this.animate), 2000 );
     }
   }
   renderScene() {
