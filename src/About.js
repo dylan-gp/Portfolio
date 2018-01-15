@@ -20,7 +20,7 @@ export default class About extends React.Component {
             <h4 className="about-item-subtitle">Languages</h4>
             <p className="about-item-text">Javascript, ES6, C/C++</p>
             <h4 className="about-item-subtitle">Front End</h4>
-            <p className="about-item-text">React, CSS3, HTML5</p>
+            <p className="about-item-text">React, CSS3, HTML5, ThreeJS</p>
             <h4 className="about-item-subtitle">Back End</h4>
             <p className="about-item-text">NodeJS, MongoDB, APIs, Cloud, Deployment</p>
             <h4 className="about-item-subtitle">Mobile</h4>
