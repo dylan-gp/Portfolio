@@ -8,7 +8,6 @@
   align-items: center;
   border-bottom: 2px outset whitesmoke;
 }
-
 .titlebar-container-fix {
   display: block;
   background-color: black;
@@ -22,7 +21,6 @@
   top: 0;
   width: 100%;
 }
-
 .titlebar-container-fix-fade {
   display: block;
   background-color: black;
@@ -41,7 +39,6 @@
   transition: 0.4s;
   opacity: 0;
 }
-
 .titlebar-container-fix-fade:hover {
   -webkit-transition: 0.4s;
   -moz-transition: 0.4s;
@@ -60,12 +57,9 @@
   width: 100%;
   z-index:9999;
 }
-
-
 .titlebar-container-fix-hide {
   display: none;
 }
-
 .titlebar-list {
   list-style: none;
   display: flex;
@@ -77,7 +71,6 @@
   position: relative;
   z-index:9999;
 }
-
 .titlebar-item {
   padding: 0 2vw;
   margin: 0;
@@ -89,8 +82,8 @@
   align-items: center;
   text-align: center;
   -webkit-text-fill-color: white; /* Will override color (regardless of order) */
-   -webkit-text-stroke-width: .2vw;
-   -webkit-text-stroke-color: black;
+  -webkit-text-stroke-width: .2vw;
+  -webkit-text-stroke-color: black;
   /* text-shadow: 2px 2px rgba(67, 32, 160, .6); */
   position: relative;
   z-index:9999;
@@ -112,20 +105,16 @@
   position: relative;
   z-index:9999;
 }
-
 .titlebar-item:hover {
   cursor: pointer;
-
   border-bottom: 2px solid black;
   opacity: .4;
 }
 .titlebar-item-fix:hover {
   cursor: pointer;
-  
   border-bottom: 2px solid white;
   opacity: .4;
 }
-
 @media screen and (max-width: 500px) {
   .titlebar-item {
     font-size: 4vw;

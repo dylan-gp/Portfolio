@@ -9,15 +9,12 @@ export default class TitleBar extends React.Component {
     this.moveToPortfolio = this.moveToPortfolio.bind(this);
     this.moveToContact = this.moveToContact.bind(this);
   }
-
   componentDidMount() {
     window.addEventListener('scroll', this.titleBarFix);
   }
-
   componentWillUnMount() {
     window.removeEventListener('scroll', this.titleBarFix);
   }
-
   titleBarFix() {
     this.marker.getBoundingClientRect().top < -10 ?
       this.marker.getBoundingClientRect().top < -80 ? 

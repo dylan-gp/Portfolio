@@ -1,9 +1,8 @@
 import React from 'react';
 import './About.css';
-import mypicture from "./mypicture.jpg";
+import mypicture from "./images/mypicture.jpg";
 
 export default class About extends React.Component {
-
   render() {
     return (
       <div className="about-container">

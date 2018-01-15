@@ -6,7 +6,6 @@
   position: relative;
   z-index: 3;
 }
-
 .header-titles {
   margin: auto;
   /* height: 54.2vw; */
@@ -15,7 +14,6 @@
   flex-direction: column;
   justify-content: center;
 }
-
 .header-hello {
   /* font-size: 4vw; */
   font-size: 7vmin;
@@ -23,10 +21,10 @@
   color: black;
   display: flex;
   align-self: center;
-   -webkit-text-fill-color: rgba(67, 32, 160, .8); /* Will override color (regardless of order) */
-   -webkit-text-stroke-width: .3vmin;
-   -webkit-text-stroke-color: black;
-   text-shadow:
+  -webkit-text-fill-color: rgba(67, 32, 160, .8); /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: .3vmin;
+  -webkit-text-stroke-color: black;
+  text-shadow:
 		-.2vmin -.2vmin 0 #000,
 		.2vmin -.2vmin 0 #000,
 		-.2vmin .2vmin 0 #000,
@@ -44,7 +42,6 @@
   opacity: 1;
   visibility: visible; 
 }
-
 .arrow-none {
   height: 10vmin;
   position: absolute;
@@ -57,7 +54,6 @@
   opacity: 0;
   visibility: hidden; 
 }
-
 .header-title {
   padding: 0;
   margin: .6vw auto;
@@ -73,7 +69,6 @@
   visibility: visible; 
   /* text-shadow: 2px 2px rgba(255, 255, 255, .6); */
 }
-
 .header-title-none {
   display: flex;
   align-self: center;
@@ -85,7 +80,6 @@
   opacity: 0;
   visibility: hidden; 
 }
-
 .header-links {
   height: 20vmin;
   display: flex;
@@ -99,5 +93,4 @@
 .header-icon {
   height: 9vmin;
   margin: auto .6vw;
-  
 }

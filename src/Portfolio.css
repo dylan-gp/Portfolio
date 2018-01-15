@@ -3,13 +3,9 @@
   width: 40vw;
   margin: auto 4vw;
 }
-
-
-
 .portfolio-img:hover {
   cursor: pointer;
 }
-
 .port-container {
   width: 60vw;
   overflow: hidden;
@@ -20,7 +16,6 @@
   padding-top: 4em;
   min-height: 100vh;
 }
-
 .portfolio-list {
   padding: 0;
   display: flex;
@@ -33,12 +28,9 @@
   padding-bottom: 2vw;
   width: 48vw;
 }
-
 .portfolio-list::-webkit-scrollbar {
   display: none;
 }
-
-
 .scroll-arrow-right {
   position: absolute;
   right: 4%;
@@ -88,18 +80,14 @@
   opacity: 1;
   cursor: pointer;
 }
-
 .piece-name {
   text-align: center;
   font-size: 2vw;
 }
-
 .piece-name-div {
   height: 6vw;
   padding-bottom: 4vw;
 }
-
-
 @media screen and (max-width: 500px) {
   .port-container {
     width: 100vw;

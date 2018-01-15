@@ -1,12 +1,11 @@
 import React from 'react';
 import Piece from './Piece';
-import CodersCodeImg from './CodersCode.png';
-import CodersCodeClientImg from './CodersCodeClient.png';
-import CodersCodeAPIImg from './CodersCodeAPI.png';
-import ZoomToYoutube from './ZoomToYoutube.png';
-import ZoomToYoutube2 from './ZoomToYoutube2.png';
-import arrow from './arrow.svg';
-
+import CodersCodeImg from './images/CodersCode.png';
+import CodersCodeClientImg from './images/CodersCodeClient.png';
+import CodersCodeAPIImg from './images/CodersCodeAPI.png';
+import ZoomToYoutube from './images/ZoomToYoutube.png';
+import ZoomToYoutube2 from './images/ZoomToYoutube2.png';
+import arrow from './images/arrow.svg';
 import './Portfolio.css';
 
 
@@ -30,7 +29,6 @@ export default class Portfolio extends React.Component {
     this.fillText = this.fillText.bind(this);
     this.stopText = this.stopText.bind(this);
   };
-
   componentDidMount() {
     this.list.addEventListener('scroll', this.arrowVisibility);
     window.addEventListener('resize', this.resize);
@@ -38,26 +36,22 @@ export default class Portfolio extends React.Component {
   componentWillUnmount() {
     window.removeEventListener('resize', this.resize);
   }
-
   popUp(piece) {
     if (piece === 'coders') {
       this.setState({ codersCode: true });
       // document.body.classList.add('no-scroll');
     }
   }
-
   popDown(piece) {
     if (piece === 'coders') {
       this.setState({ codersCode: false });
       // document.body.classList.remove('no-scroll');
     }
   }
-
   resize() {
     const prev = this.state.size;
     this.setState({size: window.matchMedia("screen and (max-width: 500px)").matches ? .80 : .48});
     if (prev !== this.state.size) this.list.scrollLeft = 0;
-
   }
   arrowVisibility() {
     const width = window.innerWidth * this.state.size;
@@ -71,7 +65,6 @@ export default class Portfolio extends React.Component {
     boo ? this.list.scrollLeft += width : this.list.scrollLeft -= width;
     // this.interval = setInterval(() => boo ? this.list.scrollLeft += window.innerWidth * .32 : this.list.scrollLeft -= window.innerWidth * .32, 1);
   }
-
   fillText(text = '') {
     clearInterval(this.int);
     if (!this.i) this.i = 0;
@@ -95,7 +88,6 @@ export default class Portfolio extends React.Component {
       }
     }, 20);
   }
-
   unscroll() {
     clearInterval(this.interval);
   }

@@ -1,9 +1,9 @@
 import React from 'react';
 import './Piece.css';
-import closeIcon from './closeIcon.png';
-import githubIconLight from './GitHub-Mark-Light-120px-plus.png'
-import githubIconDark from './GitHub-Mark-120px-plus.png'
-import goto from './goto.png';
+import closeIcon from './images/closeIcon.png';
+import githubIconLight from './images/GitHub-Mark-Light-120px-plus.png'
+import githubIconDark from './images/GitHub-Mark-120px-plus.png'
+import goto from './images/goto.png';
 
 
 export default class Piece extends React.Component {
@@ -45,18 +45,18 @@ export default class Piece extends React.Component {
           </div>
           <div className="piece-icons" >
             {this.props.githubClient ? 
-              <a href={this.props.githubClient}>
+              <a href={this.props.githubClient} rel="noopener noreferrer" target="_blank">
                 <img className="piece-gh-icon-light" alt="github frontend" src={githubIconLight} />
               </a> :
               ''
             }
             {this.props.githubAPI ? 
-              <a href={this.props.githubAPI}>
+              <a href={this.props.githubAPI} rel="noopener noreferrer" target="_blank">
                 <img className="piece-gh-icon-dark" alt="github backend" src={githubIconDark} />
               </a> :
               ''
             }
-            <a href={this.props.pageLink}>
+            <a href={this.props.pageLink} rel="noopener noreferrer" target="_blank">
               <img className="goto-icon" alt="go to piece" src={goto}/>
             </a>
           </div>

@@ -53,7 +53,7 @@ export default class Animation extends React.Component {
     this.spotLight.target.position.set(0, -100, -100);
     this.scene.add( this.spotLight );
     this.scene.add( this.spotLight.target );
-   // var helper = new THREE.CameraHelper( this.spotLight.shadow.camera );
+    // var helper = new THREE.CameraHelper( this.spotLight.shadow.camera );
     //this.scene.add( helper );
     this.scene.fog = new THREE.Fog( 0xf2f7ff, 1, 1000);
     this.upDown = false;
@@ -215,7 +215,6 @@ export default class Animation extends React.Component {
         map: texture 
     });
       const mesh = new THREE.Mesh(geometry, material);
-
       mesh.position.y = 28;
       mesh.position.x = 4;
       mesh.position.z = -50;
@@ -239,9 +238,21 @@ export default class Animation extends React.Component {
     }
   render() {
     return (
-      <div onClick={() => { this.play = !this.play; this.music = !this.music; this.onPlay(); }} style={{ position: 'relative',  zIndex: 99, width: window.innerWidth, height: window.innerWidth * 9/16, cursor: 'pointer' }}
-      ref={(mount) => this.mount = mount }
-      ></div>
+      <div onClick={() => {
+          this.play = !this.play;
+          this.music = !this.music;
+          this.onPlay();
+        }}
+        style={{
+          position: 'relative', 
+          zIndex: 99,
+          width: window.innerWidth,
+          height: window.innerWidth * 9/16,
+          cursor: 'pointer'
+        }}
+        ref={(mount) => this.mount = mount }
+      >
+      </div>
     )
   }
 }
