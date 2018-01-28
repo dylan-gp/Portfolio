@@ -40,7 +40,7 @@ export default class Header extends React.Component {
         setTimeout(() => {
           element.parentNode.removeChild(element);     
         }, 2000)
-      }, 5000);
+      }, 3000);
     }
   }
   componentWillUnmount() {
