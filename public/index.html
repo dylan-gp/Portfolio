@@ -3,13 +3,9 @@
   <head>
     <meta charset="utf-8" >
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-    <!--
-      manifest.json provides metadata used when your web app is added to the
-      homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
-    -->
+    <link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
     <link rel="shortcut icon" href="%PUBLIC_URL%/me.png">
-    <link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
     <style type="text/css">
       #loader {
         background: white;
@@ -24,14 +20,6 @@
         overflow: hidden;
         top: initial;
       }
-      .loader-contain {
-        width: 400px;
-        height: 400px;
-        position: relative;
-        margin: auto;
-        top: 50%;
-        transform: translateY(-50%);
-      }
       .initials {
         font-family: 'Monoton', cursive;
         margin: 0;
@@ -44,6 +32,14 @@
                       -30px 30px 0px rgba(67, 32, 160,0.4);
         text-align: center;
         position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .loader-contain {
+        width: 400px;
+        height: 400px;
+        position: relative;
+        margin: auto;
         top: 50%;
         transform: translateY(-50%);
       }

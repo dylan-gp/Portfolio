@@ -2,6 +2,16 @@
   "name": "portfolio-app",
   "version": "0.1.0",
   "private": true,
+   "babel": {
+    "env": {
+      "production": {
+        "plugins": [
+          "transform-react-constant-elements",
+          "transform-react-inline-elements"
+        ]
+      }
+    }
+  },
   "homepage" : "https://dylansgrandportfolio.herokuapp.com/",
   "dependencies": {
     "@sendgrid/mail": "^6.1.4",
