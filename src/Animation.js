@@ -63,6 +63,7 @@ export default class Animation extends React.Component {
     this.renderer.setSize(this.width, this.height);
     this.mount.appendChild(this.renderer.domElement);
     window.addEventListener('resize', this.resize);
+    THREE.Cache.enabled = true
     // window.addEventListener('scroll', this.animate);
     this.start();
   }
