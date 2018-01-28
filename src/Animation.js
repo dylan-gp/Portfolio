@@ -74,7 +74,7 @@ export default class Animation extends React.Component {
     THREE.Cache.enabled = true
     // window.addEventListener('scroll', this.animate);
     // this.renderScene();
-    setTimeout(() => this.start(), 2000);
+    this.start();
   }
   componentWillUnmount() {
     this.stop();
