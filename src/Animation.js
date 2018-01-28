@@ -1,5 +1,13 @@
 import React from 'react';
 import * as THREE from 'three';
+import flyingHome from './audio/flying home.mp3';
+import takeOver from './audio/TakeOver.mp3';
+import speakerJSON from './models/speaker.json';
+import speakerTopJSON from './models/speakertop.json';
+import speakerBottomJSON from './models/speakerbottom.json';
+import checkerboard from './textures/FloorsCheckerboard_S_Normal.jpg';
+import perlin from './textures/perlin-512.png';
+import moon from './textures/moon_1024.jpg';
 
 export default class Animation extends React.Component {
   constructor(props) {
@@ -22,7 +30,7 @@ export default class Animation extends React.Component {
   }
   componentDidMount() {
     this.delta = 0;
-    this.audio = Math.random() <= .5 ? new Audio('flying home.mp3') : new Audio('TakeOver.mp3');
+    this.audio = Math.random() <= .5 ? new Audio(flyingHome) : new Audio(takeOver);
     this.audio.volume = 0.5;
     this.scene = new THREE.Scene();
     this.width = window.innerWidth;
@@ -89,31 +97,33 @@ export default class Animation extends React.Component {
     this.renderer.setSize(this.width, this.height);
   }
   async speaker() {
-    const mats = [];
     const jsonLoader = new THREE.JSONLoader();
     this.geo = new THREE.Geometry();
-    jsonLoader.load("models/speaker.json", (geometry, materials) => {
-      mats.push(...materials);
-      this.geo.merge(geometry, geometry.matrix);
-    });
-    jsonLoader.load("models/speakertop.json", (geometry, materials) => {
-      this.geo.merge(geometry, geometry.matrix, mats.length);
-      mats.push(...materials);
-    });
-    jsonLoader.load("models/speakerbottom.json", (geometry, materials) => {
-      this.geo.merge(geometry, geometry.matrix, mats.length);
-      mats.push(...materials);
-      this.speak = new THREE.Mesh(this.geo, new THREE.MultiMaterial(mats));
+    const speaker = jsonLoader.parse(speakerJSON);
+    const speakerTop = jsonLoader.parse(speakerTopJSON);
+    const speakerBottom = jsonLoader.parse(speakerBottomJSON);
+    const mats = [...speaker.materials, ...speakerBottom.materials, ...speakerTop.materials];
+    this.geo.merge(speaker.geometry, speaker.geometry.matrix);
+    this.geo.merge(
+      speakerBottom.geometry,
+      speakerBottom.geometry.matrix,
+      speaker.materials.length
+    );
+    this.geo.merge(
+      speakerTop.geometry,
+      speakerTop.geometry.matrix,
+      speaker.materials.length + speakerTop.materials.length
+    );
+    this.speak = new THREE.Mesh(this.geo, new THREE.MultiMaterial(mats));
       // setInterval(() => this.speaktop.position.z += 0.002, 10);
       // setTimeout(() => setInterval(() => this.speaktop.position.z -= 0.002, 10), 5);
-      this.speak.rotateY(-0.65);
-      this.speak.scale.set(20, 20, 20);
-      this.speak.position.setZ(-200);
-      this.speak.position.setY(-100);
-      this.speak.position.setX(-100);
-      this.speak.castShadow = true;
-      this.scene.add(this.speak);
-    });
+    this.speak.rotateY(-0.65);
+    this.speak.scale.set(20, 20, 20);
+    this.speak.position.setZ(-200);
+    this.speak.position.setY(-100);
+    this.speak.position.setX(-100);
+    this.speak.castShadow = true;
+    this.scene.add(this.speak);
   }
   animate(timestamp) {
     this.renderScene();
@@ -170,7 +180,7 @@ export default class Animation extends React.Component {
   }
   plane() {
     const geometry = new THREE.PlaneGeometry(10000, 10000, 100, 100);
-    const texture =  new THREE.TextureLoader().load('textures/FloorsCheckerboard_S_Normal.jpg');
+    const texture =  new THREE.TextureLoader().load(checkerboard);
     texture.wrapS = THREE.RepeatWrapping;
     texture.wrapT = THREE.RepeatWrapping;
     texture.repeat.set(100, 100);
@@ -189,7 +199,7 @@ export default class Animation extends React.Component {
      loader.load('fonts/gentilis_regular.typeface.json', (font) => {
       const geometry = new THREE.TextGeometry("Click To Party\n(light flashes)",
         {font: font, size: 3, height: 0.5, bevelEnabled: true, curveSegments: 3, bevelThickness: 0.1, bevelSize: 0.2, bevelSegments: 3 });
-      const texture = new THREE.TextureLoader().load('textures/perlin-512.png');
+      const texture = new THREE.TextureLoader().load(perlin);
       texture.wrapS = THREE.RepeatWrapping;
       texture.wrapT = THREE.RepeatWrapping;
       const material = new THREE.MeshLambertMaterial({
@@ -207,7 +217,7 @@ export default class Animation extends React.Component {
     loader.load('fonts/gentilis_regular.typeface.json', (font) => {
       const geometry = new THREE.TextGeometry("    \"I'm not a \nbusinessman.. \n      I'm a business,\n                MAN\"",
         {font: font, size: 7, height: 0.5, bevelEnabled: true, curveSegments: 3, bevelThickness: 0.1, bevelSize: 0.2, bevelSegments: 3 });
-      const texture = new THREE.TextureLoader().load('textures/perlin-512.png');
+      const texture = new THREE.TextureLoader().load(perlin);
       texture.wrapS = THREE.RepeatWrapping;
       texture.wrapT = THREE.RepeatWrapping;
       const material = new THREE.MeshLambertMaterial({
@@ -228,8 +238,8 @@ export default class Animation extends React.Component {
       this.shapeOne = new THREE.Mesh(new THREE.SphereGeometry(50, 100, 100), 
       new THREE.MeshLambertMaterial({
           color: 0x808080,
-          map: new THREE.TextureLoader().load('textures/moon_1024.jpg'),
-          normalMap: new THREE.TextureLoader().load('textures/moon_1024.jpg')
+          map: new THREE.TextureLoader().load(moon),
+          normalMap: new THREE.TextureLoader().load(moon)
         }));
       this.shapeOne.position.z = -500;
       this.shapeOne.position.x = 500;

@@ -1,6 +1,6 @@
 import React from 'react';
 import * as THREE from 'three';
-
+import earth from './textures/earth_atmos_4096.jpg';
 
 export default class SecondAnim extends React.Component {
   constructor(props) {
@@ -92,7 +92,7 @@ export default class SecondAnim extends React.Component {
   }
   planet() {
     const geometry = new THREE.SphereGeometry(50, 100, 100);
-    const map = new THREE.TextureLoader().load('textures/earth_atmos_4096.jpg');
+    const map = new THREE.TextureLoader().load(earth);
     const material = new THREE.MeshLambertMaterial({ shading: THREE.FlatShading, map });
     this.planet = new THREE.Mesh(geometry, material);
     this.planet.position.y = 99.22;
