@@ -56,7 +56,7 @@ export default class SecondAnim extends React.Component {
 		window.addEventListener('resize', this.resize);
     this.mount.appendChild(this.renderer.domElement);
     // this.renderScene();
-    this.start();
+    if (!window.fake) this.start();
   }
   componentWillUnmount() {
     this.stop();

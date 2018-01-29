@@ -172,13 +172,13 @@ class App extends Component {
           }}
         />  
         <Header />
-        <TitleBar findAbout={this.findAbout} findPortfolio={this.findPortfolio} findContact={this.findContact} />
+         <TitleBar findAbout={this.findAbout} findPortfolio={this.findPortfolio} findContact={this.findContact} /> 
         <div className="main-content">
         <About ref="About"/>
-        <Animation />
-        <Portfolio ref="Portfolio"/>
-        <SecondAnim />
-        <Contact ref="Contact"/>
+         <Animation /> 
+         <Portfolio ref="Portfolio"/> 
+         <SecondAnim /> 
+         <Contact ref="Contact"/> 
         </div>
       </div>
     );

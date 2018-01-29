@@ -1,13 +1,16 @@
 import React from 'react';
 import * as THREE from 'three';
-import flyingHome from './audio/flying home.mp3';
-import takeOver from './audio/TakeOver.mp3';
+
 import speakerJSON from './models/speaker.json';
 import speakerTopJSON from './models/speakertop.json';
 import speakerBottomJSON from './models/speakerbottom.json';
 import checkerboard from './textures/FloorsCheckerboard_S_Normal.jpg';
 import perlin from './textures/perlin-512.png';
 import moon from './textures/moon_1024.jpg';
+
+const flyingHome = require('./audio/flying home.mp3');
+const takeOver = require('./audio/TakeOver.mp3');
+
 
 export default class Animation extends React.Component {
   constructor(props) {
@@ -74,7 +77,7 @@ export default class Animation extends React.Component {
     THREE.Cache.enabled = true
     // window.addEventListener('scroll', this.animate);
     // this.renderScene();
-    this.start();
+    if (!window.fake) this.start();
   }
   componentWillUnmount() {
     this.stop();

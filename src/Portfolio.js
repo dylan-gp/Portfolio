@@ -12,12 +12,13 @@ import './Portfolio.css';
 export default class Portfolio extends React.Component {
   constructor(props) {
     super(props);
+    const size = !window.fake ? window.matchMedia("screen and (max-width: 500px)").matches ? .80 : .48 : .80;
     this.state = {
       codersCode: false,
       hideLeft: true,
       hideRight: false,
       currentText: '',
-      size: window.matchMedia("screen and (max-width: 500px)").matches ? .80 : .48
+      size
     }
     this.scroll = this.scroll.bind(this);
     this.popUp = this.popUp.bind(this);
@@ -50,7 +51,8 @@ export default class Portfolio extends React.Component {
   }
   resize() {
     const prev = this.state.size;
-    this.setState({size: window.matchMedia("screen and (max-width: 500px)").matches ? .80 : .48});
+    const size = !window.fake ? window.matchMedia("screen and (max-width: 500px)").matches ? .80 : .48 : .80;
+    this.setState({size});
     if (prev !== this.state.size) this.list.scrollLeft = 0;
   }
   arrowVisibility() {

@@ -7,3 +7,144 @@
   background-size: 78vh auto;
   font-family: 'Titillium Web', 'sans-serif';
 }
+.animation {
+  position: 'relative';
+  z-index: 99;
+  width: 100vw;
+  height: 100vw * 9/16;
+  cursor: 'pointer';
+}
+#loader {
+  background: white;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: 100000;
+  overflow: hidden;
+}
+.no-scroll {
+  position:fixed;
+  overflow: hidden;
+  top: initial;
+}
+.initials {
+  font-family: 'Monoton', cursive;
+  margin: 0;
+  font-weight: 100;
+  font-size: 100px;
+  font-stretch: ultra-condensed;
+  color: white;
+  text-shadow:  -10px 10px 0px rgba(67, 32, 160,0.4),
+                -20px 20px 0px rgba(67, 32, 160,0.4),
+                -30px 30px 0px rgba(67, 32, 160,0.4);
+  text-align: center;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.loader-contain {
+  width: 400px;
+  height: 400px;
+  position: relative;
+  margin: auto;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.logo{
+  width: 45%;
+  height: 45%;
+  position:absolute;
+  overflow: hidden;
+  border: outset 1px rgb(67, 32, 160);
+  left:27.5%;
+  top: 27.5%;
+  background-color: black;
+  border-radius: 100%;
+}
+.logo-img{
+  width: 100%;
+  z-index:5;
+}
+.bounce1, .bounce2, .bounce3 {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: rgb(67, 32, 160);
+  opacity: 0.7;
+  position: absolute;
+  top: 0;
+  left: 0; 
+  -webkit-animation: spreadout 2.7s infinite ease-in-out;
+  animation: spreadout 2.7s infinite ease-in-out;
+}
+.final-bounce {
+  -webkit-animation: spread 5s infinite ease-in-out;
+  animation: spread 5s infinite ease-in-out;
+}
+.bounce2 {
+  -webkit-animation-delay: -0.9s;
+  animation-delay: -0.9s;
+}
+.bounce3 {
+  -webkit-animation-delay: -1.8s;
+  animation-delay: -1.8s;
+}
+.available {
+  transition: opacity .25s ease-in-out;
+  -moz-transition: opacity .25s ease-in-out;
+  -webkit-transition: opacity .25s ease-in-out;
+  opacity: 0;
+}
+@media screen and (max-width: 500px) {
+  .loader-contain {
+    width: 200px;
+    height: 200px;
+  }
+  .initials {
+    font-size: 50px;
+  }
+}
+@-webkit-keyframes spreadout {
+  0% { -webkit-transform: scale(0.3) }
+  80% {
+    -webkit-transform: scale(1.0);
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes spreadout {
+  0% { 
+    -webkit-transform: scale(0.3);
+    transform: scale(0.3);
+  }
+  80% {
+    -webkit-transform: scale(1.0);
+    transform: scale(1.0);
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@-webkit-keyframes spread {
+  0% { -webkit-transform: scale(0.3) }
+  80% {
+    -webkit-transform: scale(100.0);
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes spread {
+  0% { 
+    -webkit-transform: scale(0.3);
+    transform: scale(0.3);
+  }
+  80% {
+    -webkit-transform: scale(100.0);
+    transform: scale(100.0);
+  }
+  100% {
+    opacity: 0;
+  }
+}
