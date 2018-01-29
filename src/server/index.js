@@ -41,7 +41,7 @@ server.get('*', (req, res) => {
   `);
 });
 
-server.listen(3000, () => console.log('servering'));
+server.listen(process.env.PORT || 3000, () => console.log('servering'));
 
 // <!DOCTYPE html>
 // <html lang="en">

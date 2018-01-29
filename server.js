@@ -55311,7 +55311,7 @@ server.get('*', function (req, res) {
   res.send('\n      <!DOCTYPE html>\n      <html lang="en">\n      <head>\n        <title>Dylan Scheidt</title>\n        <meta charset="utf-8" >\n        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">\n        <link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">\n        <link rel="stylesheet" href="/css/main.css">\n        <link rel="shortcut icon" href="/me.png">\n        <script src="/bundle.js" defer></script>\n      </head>\n      <body class="no-scroll">\n        <div id="loader">\n          <div class="loader-contain">\n            <div id="bounce1" class="bounce1"></div>\n            <div id="bounce2"class="bounce2"></div>\n            <div id="bounce3" class="bounce3"></div>\n            <div class="logo">\n              <h1 class="initials">DS</h1>\n            </div>\n          </div>\n        </div>\n        <div id="root">\n        ' + Object(__WEBPACK_IMPORTED_MODULE_2_react_dom_server__["renderToString"])(__WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__App_js__["a" /* default */], null)) + '\n        </div>\n      </body>\n    </html>\n  ');
 });
 
-server.listen(3000, function () {
+server.listen(process.env.PORT || 3000, function () {
   return console.log('servering');
 });
 
