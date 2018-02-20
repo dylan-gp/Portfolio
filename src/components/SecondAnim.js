@@ -1,6 +1,6 @@
 import React from 'react';
 import * as THREE from 'three';
-import earth from './textures/earth_atmos_4096.jpg';
+import earth from '../textures/earth_atmos_4096.jpg';
 
 export default class SecondAnim extends React.Component {
   constructor(props) {
@@ -33,12 +33,12 @@ export default class SecondAnim extends React.Component {
     this.spotLight1 = new THREE.SpotLight( 0xffffff, 1.01 );
     this.spotLight1.position.set( -751.94, 127.55, 736.43 );
     this.spotLight1.castShadow = true;
-    this.spotLight1.shadowDarkness = -0.17;
+    // this.spotLight1.shadowDarkness = -0.17;
     this.scene.add(this.spotLight1);
     this.spotLight2 = new THREE.SpotLight( 0xffffff, 0 );
     this.spotLight2.position.set( 100, 1000, 100 );
     this.spotLight2.castShadow = true;
-    this.spotLight2.shadowDarkness = 0.2;
+    // this.spotLight2.shadowDarkness = 0.2;
     this.scene.add(this.spotLight2);
     const geometry = new THREE.Geometry();
     for (let i = 0; i < 5000; i ++ ) {
@@ -48,9 +48,9 @@ export default class SecondAnim extends React.Component {
       vertex.z = 10000 * Math.random() - 50;
       geometry.vertices.push( vertex );
     }
-    const material = new THREE.ParticleBasicMaterial({ size: 3, sizeAttenuation: true, transparent: true });
+    const material = new THREE.PointsMaterial({ size: 3, sizeAttenuation: true, transparent: true });
 		material.color.setHex( 0xffffff );
-		const particles = new THREE.ParticleSystem(geometry, material);
+		const particles = new THREE.Points(geometry, material);
 		particles.sortParticles = true;
 		this.scene.add(particles);
 		window.addEventListener('resize', this.resize);

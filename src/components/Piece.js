@@ -1,9 +1,9 @@
 import React from 'react';
-import './Piece.css';
-import closeIcon from './images/closeIcon.png';
-import githubIconLight from './images/GitHub-Mark-Light-120px-plus.png'
-import githubIconDark from './images/GitHub-Mark-120px-plus.png'
-import goto from './images/goto.png';
+import '../styling/Piece.css';
+import closeIcon from '../images/closeIcon.png';
+import githubIconLight from '../images/GitHub-Mark-Light-120px-plus.png'
+import githubIconDark from '../images/GitHub-Mark-120px-plus.png'
+import goto from '../images/goto.png';
 
 
 export default class Piece extends React.Component {

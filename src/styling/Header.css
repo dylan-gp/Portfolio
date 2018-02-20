@@ -1,3 +1,18 @@
+.initials {
+  font-family: 'Monoton', cursive;
+  margin: 0;
+  font-weight: 100;
+  font-size: 100px;
+  font-stretch: ultra-condensed;
+  color: white;
+  text-shadow:  -10px 10px 0px rgba(67, 32, 160,0.4),
+                -20px 20px 0px rgba(67, 32, 160,0.4),
+                -30px 30px 0px rgba(67, 32, 160,0.4);
+  text-align: center;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
 .header {
   /* height: 65vw; */
   height: 100vh;

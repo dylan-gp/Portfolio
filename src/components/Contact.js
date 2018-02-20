@@ -1,6 +1,6 @@
 import React from 'react';
-import * as utils from './utils';
-import './Contact.css';
+import * as utils from '../utils';
+import '../styling/Contact.css';
 
 export default class Contact extends React.Component {
   constructor() {

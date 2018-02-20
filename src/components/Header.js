@@ -1,9 +1,9 @@
 import React from 'react';
 import Particles from 'react-particles-js';
-import linkedinLogo from './images/In-White-128px-TM.png';
-import githubLogo from './images/GitHub-Mark-Light-120px-plus.png';
-import arrow from './images/59691.png';
-import './Header.css';
+import linkedinLogo from '../images/In-White-128px-TM.png';
+import githubLogo from '../images/GitHub-Mark-Light-120px-plus.png';
+import arrow from '../images/59691.png';
+import '../styling/Header.css';
 
 
 
@@ -24,7 +24,6 @@ export default class Header extends React.Component {
   componentDidMount() {
     window.addEventListener('scroll', this.hideTitle);
     const element = document.getElementById('loader');
-    console.log(document);
     const bounce1 = document.getElementById('bounce1');
     const bounce2 = document.getElementById('bounce2');
     const bounce3 = document.getElementById('bounce3');

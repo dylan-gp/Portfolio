@@ -1,7 +1,23 @@
-@import url(https://fonts.googleapis.com/css?family=Titillium+Web|Pangolin|Roboto);@import url(https://fonts.googleapis.com/css?family=Titillium+Web|Pangolin|Roboto);body {
+@import url(https://fonts.googleapis.com/css?family=Titillium+Web|Pangolin|Roboto);@import url(https://fonts.googleapis.com/css?family=Titillium+Web|Monoton);body {
   margin: 0;
   padding: 0;
-}.header {
+}.initials {
+  font-family: 'Monoton', cursive;
+  margin: 0;
+  font-weight: 100;
+  font-size: 100px;
+  font-stretch: ultra-condensed;
+  color: white;
+  text-shadow:  -10px 10px 0px rgba(67, 32, 160,0.4),
+                -20px 20px 0px rgba(67, 32, 160,0.4),
+                -30px 30px 0px rgba(67, 32, 160,0.4);
+  text-align: center;
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+.header {
   /* height: 65vw; */
   height: 100vh;
   overflow: hidden;
@@ -777,7 +793,7 @@ form {
   position: 'relative';
   z-index: 99;
   width: 100vw;
-  height: 100vw * 9/16;
+  height: 100vw * 9/16; 
   cursor: 'pointer';
 }
 #loader {
@@ -792,22 +808,6 @@ form {
   position:fixed;
   overflow: hidden;
   top: initial;
-}
-.initials {
-  font-family: 'Monoton', cursive;
-  margin: 0;
-  font-weight: 100;
-  font-size: 100px;
-  font-stretch: ultra-condensed;
-  color: white;
-  text-shadow:  -10px 10px 0px rgba(67, 32, 160,0.4),
-                -20px 20px 0px rgba(67, 32, 160,0.4),
-                -30px 30px 0px rgba(67, 32, 160,0.4);
-  text-align: center;
-  position: relative;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
 }
 .loader-contain {
   width: 400px;

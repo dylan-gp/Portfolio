@@ -1,15 +1,15 @@
 import React from 'react';
 import * as THREE from 'three';
 
-import speakerJSON from './models/speaker.json';
-import speakerTopJSON from './models/speakertop.json';
-import speakerBottomJSON from './models/speakerbottom.json';
-import checkerboard from './textures/FloorsCheckerboard_S_Normal.jpg';
-import perlin from './textures/perlin-512.png';
-import moon from './textures/moon_1024.jpg';
+import speakerJSON from '../models/speaker.json';
+import speakerTopJSON from '../models/speakertop.json';
+import speakerBottomJSON from '../models/speakerbottom.json';
+import checkerboard from '../textures/FloorsCheckerboard_S_Normal.jpg';
+import perlin from '../textures/perlin-512.png';
+import moon from '../textures/moon_1024.jpg';
 
-const flyingHome = require('./audio/flying home.mp3');
-const takeOver = require('./audio/TakeOver.mp3');
+const flyingHome = require('../audio/flying home.mp3');
+const takeOver = require('../audio/TakeOver.mp3');
 
 
 export default class Animation extends React.Component {
@@ -42,9 +42,6 @@ export default class Animation extends React.Component {
     this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     const hemLight = new THREE.HemisphereLight(0xffffff, 0xc61aff, 0.5);
     this.scene.add(hemLight);
-    // const pointLight = new THREE.PointLight(0xb5b5fd, 0.5, 200);
-    // this.scene.add(pointLight);  maybe turn this on
-    // pointLight.castShadow = true;
     this.speaker();
     this.text();
     this.shape();
@@ -64,8 +61,6 @@ export default class Animation extends React.Component {
     this.spotLight.target.position.set(0, -100, -100);
     this.scene.add( this.spotLight );
     this.scene.add( this.spotLight.target );
-    // var helper = new THREE.CameraHelper( this.spotLight.shadow.camera );
-    //this.scene.add( helper );
     this.scene.fog = new THREE.Fog( 0xf2f7ff, 1, 1000);
     this.upDown = false;
     this.light();
@@ -75,8 +70,6 @@ export default class Animation extends React.Component {
     this.mount.appendChild(this.renderer.domElement);
     window.addEventListener('resize', this.resize);
     THREE.Cache.enabled = true
-    // window.addEventListener('scroll', this.animate);
-    // this.renderScene();
     if (!window.fake) this.start();
   }
   componentWillUnmount() {
@@ -85,7 +78,6 @@ export default class Animation extends React.Component {
     window.removeEventListener('touchstart', this.onDocumentTouchStart);
     this.mount.removeChild(this.renderer.domElement);
     window.removeEventListener('resize', this.resize);
-    // window.removeEventListener('scroll', this.start);
   }
   start() {
     if (!this.frameId) this.frameId = requestAnimationFrame(this.animate);
@@ -118,9 +110,7 @@ export default class Animation extends React.Component {
       speakerTop.geometry.matrix,
       speaker.materials.length + speakerTop.materials.length
     );
-    this.speak = new THREE.Mesh(this.geo, new THREE.MultiMaterial(mats));
-      // setInterval(() => this.speaktop.position.z += 0.002, 10);
-      // setTimeout(() => setInterval(() => this.speaktop.position.z -= 0.002, 10), 5);
+    this.speak = new THREE.Mesh(this.geo, mats);
     this.speak.rotateY(-0.65);
     this.speak.scale.set(20, 20, 20);
     this.speak.position.setZ(-200);
@@ -136,7 +126,6 @@ export default class Animation extends React.Component {
     this.shapeOne.rotateX(0.003);
     if (this.play && this.partyMesh.visible) this.partyMesh.visible = false;
     if (!this.play && this.partyMesh && !this.partyMesh.visible) this.partyMesh.visible = true;
-    // if (this.play && timestamp % 10 < 3 && Math.random() < 0.5) this.changeLightColor();
     if (this.partyMesh) this.cycleOpacity();
     if (this.music && this.play) {
       this.renderer.setClearColor(0x000000, 1);
@@ -243,7 +232,6 @@ export default class Animation extends React.Component {
       new THREE.MeshLambertMaterial({
           color: 0x808080,
           map: new THREE.TextureLoader().load(moon),
-          normalMap: new THREE.TextureLoader().load(moon)
         }));
       this.shapeOne.position.z = -500;
       this.shapeOne.position.x = 500;

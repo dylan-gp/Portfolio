@@ -1,12 +1,12 @@
 import React from 'react';
 import Piece from './Piece';
-import CodersCodeImg from './images/CodersCode.png';
-import CodersCodeClientImg from './images/CodersCodeClient.png';
-import CodersCodeAPIImg from './images/CodersCodeAPI.png';
-import ZoomToYoutube from './images/ZoomToYoutube.png';
-import ZoomToYoutube2 from './images/ZoomToYoutube2.png';
-import arrow from './images/arrow.svg';
-import './Portfolio.css';
+import CodersCodeImg from '../images/CodersCode.png';
+import CodersCodeClientImg from '../images/CodersCodeClient.png';
+import CodersCodeAPIImg from '../images/CodersCodeAPI.png';
+import ZoomToYoutube from '../images/ZoomToYoutube.png';
+import ZoomToYoutube2 from '../images/ZoomToYoutube2.png';
+import arrow from '../images/arrow.svg';
+import '../styling/Portfolio.css';
 
 
 export default class Portfolio extends React.Component {

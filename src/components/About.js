@@ -1,6 +1,6 @@
 import React from 'react';
-import './About.css';
-import mypicture from "./images/mypicture.jpg";
+import '../styling/About.css';
+import mypicture from "../images/mypicture.jpg";
 
 export default class About extends React.Component {
   render() {
@@ -12,7 +12,7 @@ export default class About extends React.Component {
         </div>
         <div className="about-row">
           <div className="about-row-item">
-            <h2 className="about-item-title">I'm Dylan Scheidt, an aspiring software engineer</h2>
+            <h2 className="about-item-title">I'm Dylan Scheidt, software engineer</h2>
             <h3 className="about-item-subtitle-left">I've always had a love for all things tech.  My passion lies in building things and finding optimized solutions.</h3>
           </div>
           <div className="about-row-item" >
