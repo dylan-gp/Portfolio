@@ -26,14 +26,6 @@ export default class Animation extends React.Component {
     this.onPlay = this.onPlay.bind(this);
     this.stop = this.stop.bind(this);
     this.animate = this.animate.bind(this);
-    this.text = this.text.bind(this);
-    this.shape = this.shape.bind(this);
-    this.plane = this.plane.bind(this);
-    this.speaker = this.speaker.bind(this);
-    this.light = this.light.bind(this);
-    this.partyText = this.partyText.bind(this);
-    this.cycleOpacity = this.cycleOpacity.bind(this);
-    this.changeLightColor = this.changeLightColor.bind(this);
     this.resize = this.resize.bind(this);
   }
   componentDidMount() {
@@ -41,12 +33,12 @@ export default class Animation extends React.Component {
       window.innerWidth,
       window.innerWidth * 9/16
     );
-    this.speaker();
-    this.text();
-    this.shape();
-    this.plane();
-    this.light();
-    this.partyText();
+    setSpeakers();
+    setText();
+    setMoon();
+    setPlane();
+    setSpotLight();
+    setPartyText();
     setSpotLightColor();
     cameraRender();
     renderer(window.devicePixelRatio);
@@ -74,9 +66,6 @@ export default class Animation extends React.Component {
     );
     resetCamera();
   }
-  speaker() {
-    setSpeakers();
-  }
   animate(timestamp) {
     this.renderScene();
     setAnimate();
@@ -92,27 +81,6 @@ export default class Animation extends React.Component {
   onPlay() {
     if (animObj.play) animObj.audio.play();
     else animObj.audio.pause();
-  }
-  cycleOpacity() {
-    setOpacity();
-  }
-  light() {
-    setSpotLight();
-  }
-  changeLightColor() {
-    setLightColor();
-  }
-  plane() {
-    setPlane();
-  }
-  partyText() {
-    setPartyText();
-  }
-  text() {
-    setText();
-  }
-  shape() {
-    setMoon();
   }
   render() {
     return (
