@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component should match the snapshot 1`] = `
+<div
+  className="port-container"
+>
+  <h1
+    className="about-title"
+  >
+    dylansPortfolio
+  </h1>
+  <ul
+    className="portfolio-list"
+  >
+    <img
+      alt="go left"
+      className="scroll-arrow-left-hide"
+      onClick={[Function]}
+      src="arrow.svg"
+    />
+    <li
+      id="coders-code-img"
+    >
+      <img
+        alt="Coders Code"
+        className="portfolio-img"
+        onClick={[Function]}
+        onMouseLeave={[Function]}
+        onMouseOver={[Function]}
+        src="CodersCode.png"
+      />
+    </li>
+    
+    <li>
+      <img
+        alt="Zoom To Youtube"
+        className="portfolio-img"
+        onMouseLeave={[Function]}
+        onMouseOver={[Function]}
+        src="ZoomToYoutube.png"
+      />
+    </li>
+    <li>
+      <img
+        alt="Zoom To Youtube2"
+        className="portfolio-img"
+        onMouseLeave={[Function]}
+        onMouseOver={[Function]}
+        src="ZoomToYoutube2.png"
+      />
+    </li>
+    <img
+      alt="go right"
+      className="scroll-arrow-right"
+      onClick={[Function]}
+      src="arrow.svg"
+    />
+  </ul>
+  <div
+    className="piece-name-div"
+  >
+    <h2
+      className="piece-name"
+    >
+      
+    </h2>
+  </div>
+</div>
+`;

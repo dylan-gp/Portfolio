@@ -33,12 +33,10 @@ export default class SecondAnim extends React.Component {
     this.spotLight1 = new THREE.SpotLight( 0xffffff, 1.01 );
     this.spotLight1.position.set( -751.94, 127.55, 736.43 );
     this.spotLight1.castShadow = true;
-    // this.spotLight1.shadowDarkness = -0.17;
     this.scene.add(this.spotLight1);
     this.spotLight2 = new THREE.SpotLight( 0xffffff, 0 );
     this.spotLight2.position.set( 100, 1000, 100 );
     this.spotLight2.castShadow = true;
-    // this.spotLight2.shadowDarkness = 0.2;
     this.scene.add(this.spotLight2);
     const geometry = new THREE.Geometry();
     for (let i = 0; i < 5000; i ++ ) {
@@ -55,14 +53,12 @@ export default class SecondAnim extends React.Component {
 		this.scene.add(particles);
 		window.addEventListener('resize', this.resize);
     this.mount.appendChild(this.renderer.domElement);
-    // this.renderScene();
     if (!window.fake) this.start();
   }
   componentWillUnmount() {
     this.stop();
     this.mount.removeChild(this.renderer.domElement);
     window.removeEventListener('resize', this.resize);
-    // window.removeEventListener('scroll', this.start);
   }
   start() {
     if (!this.frameId) this.frameId = requestAnimationFrame(this.animate);

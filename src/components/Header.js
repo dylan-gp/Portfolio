@@ -51,7 +51,9 @@ export default class Header extends React.Component {
     window.scrollY > 0 ?
       !this.state.hide ? this.setState({ hide: true }) : null:
       this.state.hide ? this.setState({ hide: false }) : null;
-    if (this.header.getBoundingClientRect().bottom <= 20 && this.state.hello === "Hello World") this.setState({ hello: "Hello Again" });
+    if (this.header.getBoundingClientRect().bottom <= 20 
+      && this.state.hello === "Hello World") 
+      this.setState({ hello: "Hello Again" });
     if (window.scrollY >= 700) clearInterval(this.interval);
   }
   arrowFlash() {
@@ -107,16 +109,40 @@ export default class Header extends React.Component {
           height: "100%"
         }}/>  
         <div className="header-titles">
-          <h1 className={this.state.hide ? "header-title-none" : "header-title"}>Full Stack</h1>
-          <h1 className={this.state.hide ? "header-title-none" : "header-title"}>Software Engineer/Web Developer</h1>
-          <h2 className="header-hello">{this.state.hello}</h2>
+          <h1 
+            className={this.state.hide ? "header-title-none" : "header-title"}
+          >
+            Full Stack
+          </h1>
+          <h1 
+            className={this.state.hide ? "header-title-none" : "header-title"}
+          >
+            Software Engineer/Web Developer
+          </h1>
+          <h2 
+            className="header-hello"
+          >
+            {this.state.hello}
+          </h2>
         </div>
-        <img className={this.state.arrow ? "arrow" : "arrow-none"} alt="down arrow" src={arrow} />
+        <img 
+          className={this.state.arrow ? "arrow" : "arrow-none"}
+          alt="down arrow"
+          src={arrow}
+        />
         <div className="header-links">
-          <a href="https://www.linkedin.com/in/dylanscheidt" rel="noopener noreferrer" target="_blank" >
+          <a
+            href="https://www.linkedin.com/in/dylanscheidt"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
             <img className="header-icon" alt="linkedin" src={linkedinLogo} />
           </a>
-          <a href="https://github.com/dys2" rel="noopener noreferrer" target="_blank" >
+          <a
+            href="https://github.com/dys2"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
             <img className="header-icon" alt="github" src={githubLogo} />
           </a>
         </div>

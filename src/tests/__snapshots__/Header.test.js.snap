@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component should match the snapshot 1`] = `
+<div
+  className="header"
+>
+  <div
+    className={undefined}
+  >
+    <canvas
+      className={undefined}
+      style={
+        Object {
+          "height": "100%",
+          "left": 0,
+          "position": "fixed",
+          "top": 0,
+          "width": "100%",
+        }
+      }
+    />
+  </div>
+  <div
+    className="header-titles"
+  >
+    <h1
+      className="header-title-none"
+    >
+      Full Stack
+    </h1>
+    <h1
+      className="header-title-none"
+    >
+      Software Engineer/Web Developer
+    </h1>
+    <h2
+      className="header-hello"
+    >
+      
+    </h2>
+  </div>
+  <img
+    alt="down arrow"
+    className="arrow-none"
+    src="59691.png"
+  />
+  <div
+    className="header-links"
+  >
+    <a
+      href="https://www.linkedin.com/in/dylanscheidt"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      <img
+        alt="linkedin"
+        className="header-icon"
+        src="In-White-128px-TM.png"
+      />
+    </a>
+    <a
+      href="https://github.com/dys2"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      <img
+        alt="github"
+        className="header-icon"
+        src="GitHub-Mark-Light-120px-plus.png"
+      />
+    </a>
+  </div>
+</div>
+`;

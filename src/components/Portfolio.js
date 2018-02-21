@@ -12,7 +12,14 @@ import '../styling/Portfolio.css';
 export default class Portfolio extends React.Component {
   constructor(props) {
     super(props);
-    const size = !window.fake ? window.matchMedia("screen and (max-width: 500px)").matches ? .80 : .48 : .80;
+    const size = 
+      !window.fake ? 
+        window
+          .matchMedia("screen and (max-width: 500px)")
+          .matches ?
+            .80 : 
+            .48 : 
+            .80;
     this.state = {
       codersCode: false,
       hideLeft: true,
@@ -31,36 +38,44 @@ export default class Portfolio extends React.Component {
     this.stopText = this.stopText.bind(this);
   };
   componentDidMount() {
-    this.list.addEventListener('scroll', this.arrowVisibility);
+    if (this.list)
+      this.list.addEventListener('scroll', this.arrowVisibility);
     window.addEventListener('resize', this.resize);
   }
   componentWillUnmount() {
     window.removeEventListener('resize', this.resize);
   }
   popUp(piece) {
-    if (piece === 'coders') {
+    if (piece === 'coders')
       this.setState({ codersCode: true });
-      // document.body.classList.add('no-scroll');
-    }
   }
   popDown(piece) {
-    if (piece === 'coders') {
+    if (piece === 'coders')
       this.setState({ codersCode: false });
-      // document.body.classList.remove('no-scroll');
-    }
   }
   resize() {
     const prev = this.state.size;
-    const size = !window.fake ? window.matchMedia("screen and (max-width: 500px)").matches ? .80 : .48 : .80;
+    const size = 
+      !window.fake ? 
+        window
+          .matchMedia("screen and (max-width: 500px)")
+          .matches ?
+            .80 : 
+            .48 : 
+            .80;
     this.setState({size});
     if (prev !== this.state.size) this.list.scrollLeft = 0;
   }
   arrowVisibility() {
     const width = window.innerWidth * this.state.size;
-    if (this.list.scrollLeft === 0 && !this.state.hideLeft) this.setState({ hideLeft: true });
-    if (this.list.scrollLeft > 0 && this.state.hideLeft) this.setState({ hideLeft: false });
-    if (this.list.scrollLeft >= Math.floor(width * 2) && !this.state.hideRight) this.setState({ hideRight: true });
-    if (this.list.scrollLeft < Math.floor(width * 2) && this.state.hideRight) this.setState({ hideRight: false });
+    if (this.list.scrollLeft === 0 && !this.state.hideLeft)
+      this.setState({ hideLeft: true });
+    if (this.list.scrollLeft > 0 && this.state.hideLeft)
+      this.setState({ hideLeft: false });
+    if (this.list.scrollLeft >= Math.floor(width * 2) && !this.state.hideRight)
+      this.setState({ hideRight: true });
+    if (this.list.scrollLeft < Math.floor(width * 2) && this.state.hideRight)
+      this.setState({ hideRight: false });
   }
   scroll(boo) {
     const width = Math.round(window.innerWidth * this.state.size);
