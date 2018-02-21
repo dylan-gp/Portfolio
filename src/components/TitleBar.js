@@ -23,13 +23,22 @@ export default class TitleBar extends React.Component {
       this.titlebar.className = "titlebar-container-fix-hide";
   }
   moveToAbout() {
-    window.scrollTo(0, window.scrollY + this.props.findAbout()[0].y + 5);
+    window.scrollTo(
+      0,
+      window.scrollY + this.props.findAbout()[0].y + 5
+    );
   }
   moveToPortfolio() {
-    window.scrollTo(0, window.scrollY + this.props.findPortfolio()[0].y + 5);
+    window.scrollTo(
+      0,
+      window.scrollY + this.props.findPortfolio()[0].y + 5
+    );
   }
   moveToContact() {
-    window.scrollTo(0, window.scrollY + this.props.findContact()[0].y + 5);
+    window.scrollTo(
+      0,
+      window.scrollY + this.props.findContact()[0].y + 5
+    );
   }
   render() {
     return (
