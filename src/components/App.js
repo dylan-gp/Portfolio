@@ -3,8 +3,8 @@ import { findDOMNode } from 'react-dom';
 import Header from './Header';
 import TitleBar from './TitleBar';
 import About from './About';
-import Animation from './Animation';
-import SecondAnim from './SecondAnim';
+import MusicAnimation from './containers/MusicAnimation';
+import SpaceAnimation from './containers/SpaceAnimation';
 import Portfolio from './Portfolio';
 import Contact from './Contact';
 import Particles from 'react-particles-js';
@@ -172,12 +172,16 @@ class App extends Component {
           }}
         />  
         <Header />
-        <TitleBar findAbout={this.findAbout} findPortfolio={this.findPortfolio} findContact={this.findContact} /> 
+        <TitleBar
+          findAbout={this.findAbout}
+          findPortfolio={this.findPortfolio}
+          findContact={this.findContact}
+        /> 
         <div className="main-content">
         <About ref="About"/>
-        <Animation />  
+        <MusicAnimation />  
         <Portfolio ref="Portfolio"/> 
-        <SecondAnim /> 
+        <SpaceAnimation /> 
         <Contact ref="Contact"/> 
         </div>
       </div>
