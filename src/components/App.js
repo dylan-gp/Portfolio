@@ -2,25 +2,18 @@ import React, { Component } from 'react';
 import { findDOMNode } from 'react-dom';
 import Header from './Header';
 import TitleBar from './TitleBar';
-import About from './About';
+import About from './presentation/About';
 import MusicAnimation from './containers/MusicAnimation';
 import SpaceAnimation from './containers/SpaceAnimation';
-import Portfolio from './Portfolio';
-import Contact from './Contact';
+import Portfolio from './presentation/Portfolio';
+import Contact from './containers/Contact';
 import Particles from 'react-particles-js';
 import '../styling/App.css';
 
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      show: false
-    }
-    this.findAbout = this.findAbout.bind(this);
-    this.findPortfolio = this.findPortfolio.bind(this);
-    this.findContact = this.findContact.bind(this);
-    this.addComponent = this.addComponent.bind(this);
+  state = {
+    show: false
   }
   componentDidMount() {
     window.addEventListener('scroll', this.addComponent);
@@ -28,18 +21,18 @@ class App extends Component {
   componentWillUnMount() {
     window.removeEventListener('scroll', this.addComponent);
   }
-  addComponent() {
+
+  addComponent = () =>
     window.scrollY >= 700 ? this.setState({show: true}) : this.setState({show: false});
-  }
-  findAbout() {
-    return findDOMNode(this.refs['About']).getClientRects();
-  }
-  findPortfolio() {
-    return findDOMNode(this.refs['Portfolio']).getClientRects();
-  }
-  findContact() {
-    return findDOMNode(this.refs['Contact']).getClientRects();
-  }
+
+  findComponent = refName =>
+    this[refName].getClientRects();
+
+  setRef =
+    name =>
+      element => 
+        this[name] = element;
+
   render() {
     return (
       <div className="App" >
@@ -170,19 +163,18 @@ class App extends Component {
             width: "100%",
             height: "100%"
           }}
-        />  
+        />
+        
         <Header />
         <TitleBar
-          findAbout={this.findAbout}
-          findPortfolio={this.findPortfolio}
-          findContact={this.findContact}
+          findComponent={this.findComponent}
         /> 
         <div className="main-content">
-        <About ref="About"/>
-        <MusicAnimation />  
-        <Portfolio ref="Portfolio"/> 
-        <SpaceAnimation /> 
-        <Contact ref="Contact"/> 
+          <About setRef={this.setRef('About')} />
+          <MusicAnimation />  
+          <Portfolio setRef={this.setRef('Portfolio')} /> 
+          <SpaceAnimation /> 
+          <Contact setRef={this.setRef('Contact')} /> 
         </div>
       </div>
     );

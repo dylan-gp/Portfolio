@@ -4,10 +4,6 @@ import '../styling/TitleBar.css';
 export default class TitleBar extends React.Component {
   constructor(props) {
     super(props);
-    this.titleBarFix = this.titleBarFix.bind(this);
-    this.moveToAbout = this.moveToAbout.bind(this);
-    this.moveToPortfolio = this.moveToPortfolio.bind(this);
-    this.moveToContact = this.moveToContact.bind(this);
   }
   componentDidMount() {
     window.addEventListener('scroll', this.titleBarFix);
@@ -15,49 +11,65 @@ export default class TitleBar extends React.Component {
   componentWillUnMount() {
     window.removeEventListener('scroll', this.titleBarFix);
   }
-  titleBarFix() {
+  titleBarFix = () => {
     this.marker.getBoundingClientRect().top < -10 ?
       this.marker.getBoundingClientRect().top < -80 ? 
       this.titlebar.className = "titlebar-container-fix-fade" :
       this.titlebar.className = "titlebar-container-fix" :
       this.titlebar.className = "titlebar-container-fix-hide";
   }
-  moveToAbout() {
+  moveToComponent = (compName) =>
     window.scrollTo(
       0,
-      window.scrollY + this.props.findAbout()[0].y + 5
+      window.scrollY + 
+      this.props.findComponent(compName)[0].y + 
+      5
     );
-  }
-  moveToPortfolio() {
-    window.scrollTo(
-      0,
-      window.scrollY + this.props.findPortfolio()[0].y + 5
-    );
-  }
-  moveToContact() {
-    window.scrollTo(
-      0,
-      window.scrollY + this.props.findContact()[0].y + 5
-    );
-  }
+
+  setRef = name =>
+    element => 
+      this[name] = element;
   render() {
     return (
-      <div>
-      <div ref={(div) => this.marker = div} className="titlebar-container">
-        <ul className="titlebar-list">
-          <li onClick={this.moveToAbout} className="titlebar-item">About</li>
-          <li onClick={this.moveToPortfolio} className="titlebar-item">Portfolio</li>
-          <li onClick={this.moveToContact} className="titlebar-item">Contact</li>
-        </ul>
-        </div>
-        <div ref={(div) => this.titlebar = div} className="titlebar-container-fix-hide">
-        <ul className="titlebar-list">
-          <li onClick={this.moveToAbout} className="titlebar-item-fix">About</li>
-          <li onClick={this.moveToPortfolio} className="titlebar-item-fix">Portfolio</li>
-          <li onClick={this.moveToContact} className="titlebar-item-fix">Contact</li>
-        </ul>
-        </div>
-      </div>
+      <React.Fragment>
+        <TitleBarItem
+          divClass="titlebar-container"
+          liClass="titlebar-item"
+          moveToComponent={this.moveToComponent}
+          setRef={this.setRef('marker')}
+        />
+        <TitleBarItem
+          divClass="titlebar-container-fix-hide"
+          liClass="titlebar-item-fix"
+          moveToComponent={this.moveToComponent}
+          setRef={this.setRef('titlebar')}
+        />
+      </React.Fragment>
     )
   }
 }
+
+const TitleBarItem = (props) => (
+  <div ref={props.setRef} className={props.divClass}>
+    <ul className="titlebar-list">
+      {titleBarList.map(name =>
+        <TitleBarListItem 
+          name={name}
+          liClass={props.liClass}
+          moveToComponent={props.moveToComponent}
+        />
+      )}
+    </ul>
+  </div>
+);
+
+const TitleBarListItem = (props) => (
+  <li
+    onClick={() => props.moveToComponent(props.name)}
+    className={props.liClass}
+  >
+    {props.name}
+  </li>
+);
+
+const titleBarList = ['About', 'Portfolio', 'Contact'];
