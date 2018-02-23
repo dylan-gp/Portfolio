@@ -25,14 +25,11 @@ export default class Contact extends React.Component {
     this.setState({ modal: true });
     setTimeout(() => this.setState({ modal: false }), 2000);
   }
-  render() {
-    return (
+  render = () =>
       <ContactView 
         setRef={this.props.setRef}
         popUp={this.popUp}
         onSubmit={this.onSubmit}
         modal={this.state.modal}
-      />
-    );
-  }
+      />;
 }

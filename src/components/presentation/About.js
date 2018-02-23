@@ -20,16 +20,38 @@ export default (props) => (
       </div>
       <div className="about-row-item" >
         <h3 className="about-item-title">What I Do</h3>
-        <h4 className="about-item-subtitle">Languages</h4>
-        <p className="about-item-text">Javascript, ES6, C/C++</p>
-        <h4 className="about-item-subtitle">Front End</h4>
-        <p className="about-item-text">React, CSS3, HTML5, ThreeJS</p>
-        <h4 className="about-item-subtitle">Back End</h4>
-        <p className="about-item-text">NodeJS, MongoDB, APIs, Cloud, Deployment</p>
-        <h4 className="about-item-subtitle">Mobile</h4>
-        <p className="about-item-text">React Native</p>
+        {aboutText.map(
+          item => 
+            <AboutTextItem
+              category={item.category}
+              text={item.text}
+            />
+        )}
       </div>
     </div>
   </div>
 );
+
+
+const AboutTextItem = (props) => (
+  <React.Fragment>
+    <h4 className="about-item-subtitle">{props.category}</h4>
+    <p className="about-item-text">{props.text}</p>
+  </React.Fragment>
+);
+
+const aboutText = [
+  {
+    category: 'Languages',
+    text: 'Javascript, ES6, C/C++'
+  },
+  {
+    category: 'Front End',
+    text: 'React, Redux, CSS3, HTML5, ThreeJS, SASS'
+  },
+  {
+    category: 'Back End',
+    text: 'NodeJS, MongoDB, APIs, Cloud, Deployment'
+  }
+];
 

@@ -4,11 +4,9 @@
   vertical-align: middle;
   transition: height .5s;
 }
-
 .portfolio-item-img:hover {
   height: 25%;
 }
-
 .portfolio-item-img-container {
   vertical-align: middle;
   display: flex;
@@ -20,7 +18,6 @@
   width: 30vw;
   overflow: hidden;
 }
-
 .portfolio-item-overlay:hover + 
 .portfolio-item-img-container 
 .portfolio-item-img {
@@ -93,6 +90,12 @@
   .portfolio-item-list {
     width: 45vw;
     margin: 1vw;
+  }
+  .portfolio-item-overlay {
+    width: 45vw;
+  }
+  .portfolio-item-img-container {
+    width: 45vw;
   }
   .portfolio-list {
     padding: 0;

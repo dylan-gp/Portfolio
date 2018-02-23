@@ -1,7 +1,7 @@
 import express from 'express';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import App from '../components/App.js';
+import App from '../components/containers/App.js';
 
 global.window = { addEventHandler() {}, fake: true }
 

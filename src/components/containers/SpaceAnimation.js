@@ -4,15 +4,6 @@ import AnimationView from '../presentation/Animation';
 
 
 export default class SpaceAnimation extends React.Component {
-  constructor(props) {
-    super(props);
-    this.animate = this.animate.bind(this);
-    this.renderScene = this.renderScene.bind(this);
-    this.start = this.start.bind(this);
-    this.stop = this.stop.bind(this);
-    this.resize = this.resize.bind(this);
-    this.setRef = this.setRef.bind(this);
-  }
   componentDidMount() {
     this.spaceAnimation = new SpaceLogicAnimation(
       {
@@ -38,16 +29,16 @@ export default class SpaceAnimation extends React.Component {
     this.mount.removeChild(this.spaceAnimation.renderer.domElement);
     window.removeEventListener('resize', this.resize);
   }
-  start() {
-    if (!this.frameId) this.frameId = requestAnimationFrame(this.animate);
-  }
-  stop() {
+  start = () => 
+    !this.frameId ? this.frameId = requestAnimationFrame(this.animate) : '';
+
+  stop = () =>
     cancelAnimationFrame(this.frameId);
-  }
-  resize() {
+
+  resize = () =>
     this.spaceAnimation.resetCamera();
-  }
-  animate() {
+
+  animate = () => {
     this.renderScene();
     this.spaceAnimation.setAnimate();
     if (window.scrollY >= this.mount.offsetTop - window.innerHeight 
@@ -60,18 +51,20 @@ export default class SpaceAnimation extends React.Component {
           2000
       );
   }
-  renderScene() {
+  renderScene = () =>
     this.spaceAnimation
       .renderer
       .render(
         this.spaceAnimation.scene, 
         this.spaceAnimation.camera
       );
-  }
-  setRef(mount) {
+
+  setRef = mount =>
     this.mount = mount;
-  }
-  render() {
-    return <AnimationView music={false} setRef={this.setRef} />
-  }
+
+  render = () =>
+    <AnimationView
+      music={false}
+      setRef={this.setRef}
+    />;
 }
