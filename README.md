@@ -3,15 +3,28 @@
 ## Sections
 * Header
 * About
-* First Animation
+* Music Animation
 * Portfolio
-* Second Animation
+* Space Animation
 * Contact Form
 
 
 ## Proposed change as of 2/19
 ![Proposed Change](./ProposedChange2:19.png)
 
-## Current Concerns
-* Lots of business logic in components. Currently in the process of factoring out logic for animations given the weight of the components.  Regarding the other components, given the small scope of the project I don't see the logic being a problem.   If projects expands more it may be a good idea to seperate logic.  Could possibly even use a lightweight store controller like Mobx.
-* Currently working on full restructure so folder structure may seem a bit random in the intermediary
+## Layout
+#### audio
+#### browser
+* Client side rendering
+#### components
+* Broken down into presentational components and container components
+#### images
+#### models
+* 3d model json data
+#### server
+* Server side rendering
+#### styling
+#### tests
+#### textures
+#### animation-utils
+* contains heavy animation logic
